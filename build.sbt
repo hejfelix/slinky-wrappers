@@ -5,7 +5,7 @@ inThisBuild(List(
     licenses := Seq("MIT" -> url("http://opensource.org/licenses/mit")),
     homepage := Some(url("https://github.com/hejfelix/slinky-wrappers")),
     developers := List(Developer("hejfelix", "Felix Bjært Hargreaves", "hargreaves@lambdaminute.com", url("https://github.com/hejfelix"))),
-    scmInfo := Some(ScmInfo("https://github.com/hejfelix/slinky-wrappers", "scm:git:git@github.com:hejfelix/slinky-wrappers.git")),
+    scmInfo := Some(ScmInfo(url("https://github.com/hejfelix/slinky-wrappers"), "scm:git:git@github.com:hejfelix/slinky-wrappers.git")),
 
     // These are the sbt-release-early settings to configure
     pgpPublicRing := file("./travis/local.pubring.asc"),
