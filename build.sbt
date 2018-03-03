@@ -7,6 +7,7 @@ inThisBuild(List(
     developers := List(Developer("hejfelix", "Felix Bjært Hargreaves", "hargreaves@lambdaminute.com", url("https://github.com/hejfelix"))),
     scmInfo := Some(ScmInfo(url("https://github.com/hejfelix/slinky-wrappers"), "scm:git:git@github.com:hejfelix/slinky-wrappers.git")),
 
+
     // These are the sbt-release-early settings to configure
     pgpPublicRing := file("./travis/local.pubring.asc"),
     pgpSecretRing := file("./travis/local.secring.asc"),
