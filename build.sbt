@@ -1,5 +1,7 @@
 import Dependencies._
 
+addCommandAlias("startDemo", ";project demo;fastOptJS::startWebpackDevServer;~fastOptJS")
+
 inThisBuild(
   List(
     // These are normal sbt settings to configure for release, skip if already defined
