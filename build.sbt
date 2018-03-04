@@ -15,20 +15,13 @@ inThisBuild(
     // These are the sbt-release-early settings to configure
     pgpPublicRing := file("./travis/local.pubring.asc"),
     pgpSecretRing := file("./travis/local.secring.asc"),
-    releaseEarlyWith := SonatypePublisher
+    releaseEarlyWith := SonatypePublisher,
+    organization := "com.lambdaminute.slinkywrappers",
+    scalaVersion := "2.12.4"
   ))
 
-lazy val root = (project in file(".")).settings(
-  inThisBuild(
-    List(
-      organization := "com.lambdaminute",
-      scalaVersion := "2.12.4"
-    )),
-  name := "wrappers",
-  libraryDependencies += scalaTest % Test
-)
-
-val slinkyVersion = "0.3.2"
+val slinkyVersion     = "0.3.2"
+val materialUiVersion = "1.0.0-beta.35"
 
 lazy val materialUi =
   project
@@ -38,8 +31,6 @@ lazy val materialUi =
       libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
       addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
     )
-
-val materialUiVersion = "1.0.0-beta.35"
 lazy val demo = project
   .in(file("demo"))
   .enablePlugins(ScalaJSBundlerPlugin)
