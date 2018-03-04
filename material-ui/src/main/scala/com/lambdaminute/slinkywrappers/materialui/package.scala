@@ -3,6 +3,7 @@ package com.lambdaminute.slinkywrappers
 import slinky.readwrite.Writer
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
 
 package object materialui {
 
@@ -76,4 +77,9 @@ package object materialui {
     case object justify extends align
     implicit val writer: Writer[align] = _.toString.asInstanceOf[js.Object]
   }
+
+  // Theme stuff
+  type Breakpoint                       = String
+  type BreakPointsOptionsAndBreakPoints = BreakPoints with BreakpointsOptions
+  type TypographyOptions = js.Object
 }

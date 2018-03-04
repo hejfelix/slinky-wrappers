@@ -1,13 +1,13 @@
 package com.lambdaminute.frase.web
 
+import com.lambdaminute.slinkywrappers.materialui.MaterialUi
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSExportTopLevel, JSImport}
 import scala.scalajs.LinkingInfo
-
 import slinky.core._
 import slinky.web.ReactDOM
 import slinky.hot
-
 import org.scalajs.dom
 
 @JSImport("resources/index.css", JSImport.Default)
