@@ -8,7 +8,7 @@ import slinky.core.{ExternalComponent, ExternalComponentNoPropsWithAttributes}
 package object table {
 
   @react object Table extends ExternalComponent {
-    case class Props(attached: UndefOr[Attached | Boolean] = js.undefined)
+    case class Props(attached: UndefOr[AttachedVertical | Boolean] = js.undefined)
     override val component = SemanticUiReact.Table
   }
 

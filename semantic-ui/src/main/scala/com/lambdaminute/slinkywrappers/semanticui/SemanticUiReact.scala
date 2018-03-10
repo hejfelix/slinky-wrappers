@@ -13,7 +13,12 @@ object SemanticUiReact extends js.Object {
 
   // Elements
 
-  val Button: js.Object    = js.native
+  @js.native
+  object Button extends js.Object {
+    val Content: js.Object = js.native
+    val Group: js.Object   = js.native
+    val Or: js.Object      = js.native
+  }
   val Container: js.Object = js.native
   val Divider: js.Object   = js.native
   val Flag: js.Object      = js.native
@@ -60,22 +65,21 @@ object SemanticUiReact extends js.Object {
   val Item: js.Object          = js.native
   val Statistic: js.Object     = js.native
 
-
   // Modules
 
-  val Accordion: js.Object = js.native
-  val Checkbox: js.Object = js.native
-  val Dimmer: js.Object = js.native
-  val Dropdown: js.Object = js.native
-  val Embed: js.Object = js.native
-  val Modal: js.Object = js.native
-  val Popup: js.Object = js.native
-  val Progress: js.Object = js.native
-  val Rating: js.Object = js.native
-  val Search: js.Object = js.native
-  val Sidebar: js.Object = js.native
-  val Sticky: js.Object = js.native
-  val Tab: js.Object = js.native
+  val Accordion: js.Object  = js.native
+  val Checkbox: js.Object   = js.native
+  val Dimmer: js.Object     = js.native
+  val Dropdown: js.Object   = js.native
+  val Embed: js.Object      = js.native
+  val Modal: js.Object      = js.native
+  val Popup: js.Object      = js.native
+  val Progress: js.Object   = js.native
+  val Rating: js.Object     = js.native
+  val Search: js.Object     = js.native
+  val Sidebar: js.Object    = js.native
+  val Sticky: js.Object     = js.native
+  val Tab: js.Object        = js.native
   val Transition: js.Object = js.native
 
   // Behaviors
@@ -83,7 +87,6 @@ object SemanticUiReact extends js.Object {
   val Visibility: js.Object = js.native
 
   // Addons
-
 
 }
 
@@ -109,10 +112,87 @@ object Container extends ExternalComponentNoProps {
   )
   override val component = SemanticUiReact.Checkbox
 }
-
 @react object Button extends ExternalComponent {
-  case class Props(primary: UndefOr[Boolean] = js.undefined,
+  case class Props(active: UndefOr[Boolean] = js.undefined,
+                   animated: UndefOr[String] = js.undefined,
+                   as: UndefOr[String] = js.undefined,
+                   attached: UndefOr[Boolean | Attached] = js.undefined,
                    basic: UndefOr[Boolean] = js.undefined,
+                   circular: UndefOr[Boolean] = js.undefined,
+                   className: UndefOr[String] = js.undefined,
+                   color: UndefOr[Color] = js.undefined,
+                   compact: UndefOr[Boolean] = js.undefined,
+                   content: UndefOr[js.Object] = js.undefined,
+                   disabled: UndefOr[Boolean] = js.undefined,
+                   floated: UndefOr[Boolean] = js.undefined,
+                   primary: UndefOr[Boolean] = js.undefined,
                    onClick: UndefOr[EventHandler] = js.undefined)
   override val component = SemanticUiReact.Button
+}
+
+@react object ButtonContent extends ExternalComponent {
+  case class Props(
+      as: UndefOr[String] = js.undefined,
+      className: UndefOr[String] = js.undefined,
+      content: UndefOr[js.Object] = js.undefined,
+      hidden: UndefOr[Boolean] = js.undefined,
+      visible: UndefOr[Boolean] = js.undefined
+  )
+  override val component = SemanticUiReact.Button.Content
+}
+
+@react object ButtonGroup extends ExternalComponent {
+  case class Props(
+      as: UndefOr[String] = js.undefined,
+      basic: UndefOr[Boolean] = js.undefined,
+      buttons: UndefOr[js.Array[js.Object]] = js.undefined,
+      className: UndefOr[String] = js.undefined,
+      color: UndefOr[Color] = js.undefined,
+      compact: UndefOr[Boolean] = js.undefined,
+      content: UndefOr[js.Object] = js.undefined,
+      floated: UndefOr[FloatedVertical] = js.undefined,
+      fluid: UndefOr[Boolean] = js.undefined,
+      icon: UndefOr[Boolean] = js.undefined,
+      inverted: UndefOr[Boolean] = js.undefined,
+      labeled: UndefOr[Boolean] = js.undefined,
+      negative: UndefOr[Boolean] = js.undefined,
+      positive: UndefOr[Boolean] = js.undefined,
+      primary: UndefOr[Boolean] = js.undefined,
+      secondary: UndefOr[Boolean] = js.undefined,
+      size: UndefOr[Size] = js.undefined,
+      toggle: UndefOr[Boolean] = js.undefined,
+      vertical: UndefOr[Boolean] = js.undefined,
+      widths: UndefOr[Width] = js.undefined,
+  )
+  override val component = SemanticUiReact.Button.Content
+}
+
+@react object ButtonOr extends ExternalComponent {
+  case class Props(
+      as: UndefOr[String] = js.undefined,
+      className: UndefOr[String] = js.undefined,
+      text: UndefOr[String | Double] = js.undefined
+  )
+  override val component = SemanticUiReact.Button.Or
+}
+
+@react object Icon extends ExternalComponent {
+  case class Props(
+      as: UndefOr[String] = js.undefined,
+      bordered: UndefOr[Boolean] = js.undefined,
+      circular: UndefOr[Boolean] = js.undefined,
+      className: UndefOr[String] = js.undefined,
+      color: UndefOr[Color] = js.undefined,
+      corner: UndefOr[Boolean] = js.undefined,
+      disabled: UndefOr[Boolean] = js.undefined,
+      fitted: UndefOr[Boolean] = js.undefined,
+      flipped: UndefOr[Flipped] = js.undefined,
+      inverted: UndefOr[Boolean] = js.undefined,
+      link: UndefOr[Boolean] = js.undefined,
+      loading: UndefOr[Boolean] = js.undefined,
+      name: UndefOr[IconName] = js.undefined,
+      rotated: UndefOr[Rotated] = js.undefined,
+      size: UndefOr[Size] = js.undefined,
+  )
+  override val component = SemanticUiReact.Icon
 }

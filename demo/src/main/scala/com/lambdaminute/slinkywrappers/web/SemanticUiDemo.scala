@@ -1,6 +1,6 @@
 package com.lambdaminute.slinkywrappers.web
 
-import com.lambdaminute.slinkywrappers.semanticui.{Button, EventHandler, Header, Position}
+import com.lambdaminute.slinkywrappers.semanticui._
 import com.lambdaminute.slinkywrappers.semanticui.menu.{Menu, MenuItem, MenuMenu}
 import com.lambdaminute.slinkywrappers.semanticui.table._
 import slinky.core.{Component, StatelessComponent}
@@ -14,7 +14,8 @@ import slinky.web.html.div
 
   override def render(): ReactElement = div(
     Header()("Semantic UI Wrappers"),
-    Button(primary = true)("Primary"),
+    Button(primary = true, animated = "vertical")(ButtonContent(visible = true)("Go"),
+                                                  ButtonContent(hidden = true)(Icon(name = IconName.`arrow right`))),
     Button()("Secondary"),
     MenuDemo(),
     TableDemo(),
@@ -52,7 +53,7 @@ import slinky.web.html.div
 @react class TableDemo extends StatelessComponent {
   type Props = Unit
 
-  private val headers = TableHeader(TableHeaderCell(colSpan = 2)("Things"), TableHeaderCell()("Co-things"))
+  private val headers = TableHeader(TableRow()(TableHeaderCell(colSpan = 2)("Things"), TableHeaderCell()("Co-things")))
 
   private val body = TableBody(
     TableRow()(TableCell(collapsing = true)("Egg"), TableCell(collapsing = true)("Banana"), TableCell()("Cow"))
