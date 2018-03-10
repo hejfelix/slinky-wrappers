@@ -1,5 +1,3 @@
-import Dependencies._
-
 addCommandAlias("startDemo", ";project demo;fastOptJS::startWebpackDevServer;~fastOptJS")
 
 inThisBuild(
@@ -25,6 +23,14 @@ inThisBuild(
 val slinkyVersion     = "0.3.2"
 val materialUiVersion = "1.0.0-beta.35"
 
+lazy val artifactNaming =
+  artifact in (Compile, packageBin) := {
+    val previous: Artifact = (artifact in (Compile, packageBin)).value
+    val newName            = s"slinky-wrappers-${previous.name}"
+    println(s"Using new name: ${newName}")
+    previous.withName(newName)
+  }
+
 lazy val materialUi =
   project
     .in(file("material-ui"))
@@ -33,6 +39,7 @@ lazy val materialUi =
       libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
       addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
     )
+    .settings(artifactNaming)
 
 lazy val semanticUi =
   project
@@ -42,6 +49,7 @@ lazy val semanticUi =
       libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
       addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
     )
+    .settings(artifactNaming)
 
 lazy val demo = project
   .in(file("demo"))

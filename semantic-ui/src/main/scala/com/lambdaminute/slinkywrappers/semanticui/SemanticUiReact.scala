@@ -11,11 +11,36 @@ import slinky.readwrite.Writer
 @js.native
 object SemanticUiReact extends js.Object {
 
+  // Elements
+
   val Button: js.Object    = js.native
   val Container: js.Object = js.native
   val Divider: js.Object   = js.native
+  val Flag: js.Object      = js.native
   val Header: js.Object    = js.native
-  val Checkbox: js.Object  = js.native
+  val Icon: js.Object      = js.native
+  val Image: js.Object     = js.native
+  val Input: js.Object     = js.native
+  val Label: js.Object     = js.native
+  val List: js.Object      = js.native
+  val Loader: js.Object    = js.native
+  val Rail: js.Object      = js.native
+  val Reveal: js.Object    = js.native
+  val Segment: js.Object   = js.native
+  val Step: js.Object      = js.native
+
+  // Collections
+
+  val Breadcrumb: js.Object = js.native
+  val Form: js.Object       = js.native
+  val Grid: js.Object       = js.native
+  val Message: js.Object    = js.native
+
+  @js.native
+  object Menu extends js.Object {
+    val Menu: js.Object = js.native
+    val Item: js.Object = js.native
+  }
 
   @js.native
   object Table extends js.Object {
@@ -26,11 +51,39 @@ object SemanticUiReact extends js.Object {
     val Body: js.Object       = js.native
   }
 
-  @js.native
-  object Menu extends js.Object {
-    val Menu: js.Object = js.native
-    val Item: js.Object = js.native
-  }
+  // Views
+
+  val Advertisement: js.Object = js.native
+  val Card: js.Object          = js.native
+  val Comment: js.Object       = js.native
+  val Feed: js.Object          = js.native
+  val Item: js.Object          = js.native
+  val Statistic: js.Object     = js.native
+
+
+  // Modules
+
+  val Accordion: js.Object = js.native
+  val Checkbox: js.Object = js.native
+  val Dimmer: js.Object = js.native
+  val Dropdown: js.Object = js.native
+  val Embed: js.Object = js.native
+  val Modal: js.Object = js.native
+  val Popup: js.Object = js.native
+  val Progress: js.Object = js.native
+  val Rating: js.Object = js.native
+  val Search: js.Object = js.native
+  val Sidebar: js.Object = js.native
+  val Sticky: js.Object = js.native
+  val Tab: js.Object = js.native
+  val Transition: js.Object = js.native
+
+  // Behaviors
+
+  val Visibility: js.Object = js.native
+
+  // Addons
+
 
 }
 
