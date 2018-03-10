@@ -10,11 +10,11 @@ import scala.scalajs.js.|
 package object semanticui {
   type EventHandler = js.Function2[Event, js.Dynamic, Unit]
 
-  sealed trait Position
-  object Position {
-    case object left  extends Position
-    case object right extends Position
-    implicit val writer: Writer[Position] = _.toString.asInstanceOf[js.Object]
+  sealed trait VerticalPosition
+  object VerticalPosition {
+    case object left  extends VerticalPosition
+    case object right extends VerticalPosition
+    implicit val writer: Writer[VerticalPosition] = _.toString.asInstanceOf[js.Object]
   }
 
   sealed trait AttachedVertical

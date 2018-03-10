@@ -28,7 +28,7 @@ package object menu {
   }
 
   @react object MenuMenu extends ExternalComponent {
-    case class Props(position: UndefOr[Position] = js.undefined)
+    case class Props(position: UndefOr[VerticalPosition] = js.undefined)
     override val component = SemanticUiReact.Menu.Menu
   }
 

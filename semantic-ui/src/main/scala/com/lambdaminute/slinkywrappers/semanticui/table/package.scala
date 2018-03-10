@@ -28,7 +28,7 @@ package object table {
   @react object TableCell extends ExternalComponent {
     case class Props(
         collapsing: UndefOr[Boolean] = js.undefined,
-        textAlign: UndefOr[Position] = js.undefined
+        textAlign: UndefOr[VerticalPosition] = js.undefined
     )
     override val component = SemanticUiReact.Table.Cell
   }

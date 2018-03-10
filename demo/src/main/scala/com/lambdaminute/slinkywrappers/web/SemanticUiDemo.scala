@@ -44,7 +44,7 @@ import slinky.web.html.div
   override def render(): ReactElement =
     Menu()(
       items,
-      MenuMenu(position = Position.right)(
+      MenuMenu(position = VerticalPosition.right)(
         subItems,
       )
     )

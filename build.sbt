@@ -23,10 +23,12 @@ inThisBuild(
 val slinkyVersion     = "0.3.2"
 val materialUiVersion = "1.0.0-beta.35"
 
+val prefixName = "slinky-wrappers"
+
 lazy val artifactNaming =
   artifact in (Compile, packageBin) := {
     val previous: Artifact = (artifact in (Compile, packageBin)).value
-    val newName            = s"slinky-wrappers-${previous.name}"
+    val newName            = s"${previous.name}"
     println(s"Using new name: ${newName}")
     previous.withName(newName)
   }
@@ -38,8 +40,7 @@ lazy val materialUi =
     .settings(
       libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
       addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
-    )
-    .settings(artifactNaming)
+    ).withId(s"$prefixName-material-ui")
 
 lazy val semanticUi =
   project
@@ -48,8 +49,7 @@ lazy val semanticUi =
     .settings(
       libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
       addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
-    )
-    .settings(artifactNaming)
+    ).withId(s"$prefixName-semantic-ui")
 
 lazy val demo = project
   .in(file("demo"))

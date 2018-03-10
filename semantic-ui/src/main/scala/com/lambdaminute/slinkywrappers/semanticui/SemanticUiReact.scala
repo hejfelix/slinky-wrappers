@@ -1,5 +1,7 @@
 package com.lambdaminute.slinkywrappers.semanticui
 
+import javax.swing.Icon
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.{|, UndefOr}
@@ -124,9 +126,21 @@ object Container extends ExternalComponentNoProps {
                    compact: UndefOr[Boolean] = js.undefined,
                    content: UndefOr[js.Object] = js.undefined,
                    disabled: UndefOr[Boolean] = js.undefined,
-                   floated: UndefOr[Boolean] = js.undefined,
+                   floated: UndefOr[FloatedVertical] = js.undefined,
+                   fluid: UndefOr[Boolean] = js.undefined,
+                   icon: UndefOr[IconName] = js.undefined,
+                   inverted: UndefOr[Boolean] = js.undefined,
+                   label: UndefOr[String | js.Object] = js.undefined,
+                   labelPosition: UndefOr[VerticalPosition] = js.undefined,
+                   loading: UndefOr[Boolean] = js.undefined,
+                   negative: UndefOr[Boolean] = js.undefined,
+                   onClick: UndefOr[EventHandler] = js.undefined,
+                   positive: UndefOr[Boolean] = js.undefined,
                    primary: UndefOr[Boolean] = js.undefined,
-                   onClick: UndefOr[EventHandler] = js.undefined)
+                   secondary: UndefOr[Boolean] = js.undefined,
+                   size: UndefOr[Size] = js.undefined,
+                   tabIndex: UndefOr[Int | String] = js.undefined,
+                   toggle: UndefOr[Boolean] = js.undefined)
   override val component = SemanticUiReact.Button
 }
 
