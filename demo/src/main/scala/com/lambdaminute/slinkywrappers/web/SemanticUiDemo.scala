@@ -46,3 +46,9 @@ import slinky.web.html.div
       )
     )
 }
+
+@react class TableDemo extends StatlelessComponent {
+  type Props = Unit
+
+  override def render(): ReactElement = ???
+}
