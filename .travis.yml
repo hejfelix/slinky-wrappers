@@ -2,15 +2,13 @@ sudo: false
 language: scala
 scala:
 - 2.12.4
-script:
-- sbt ++$TRAVIS_SCALA_VERSION test
 jdk:
 - oraclejdk8
 deploy:
   on:
     tags: true
-after_success:
-- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION 'materialUi/releaseEarly';
+script:
+- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-semantic-ui/releaseEarly'; sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-material-ui/releaseEarly';
   fi
 before_install:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then openssl aes-256-cbc -K $encrypted_f717c0e11167_key

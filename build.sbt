@@ -1,4 +1,4 @@
-import Dependencies._
+addCommandAlias("startDemo", ";project demo;fastOptJS::startWebpackDevServer;~fastOptJS")
 
 inThisBuild(
   List(
@@ -16,12 +16,22 @@ inThisBuild(
     pgpPublicRing := file("./travis/local.pubring.asc"),
     pgpSecretRing := file("./travis/local.secring.asc"),
     releaseEarlyWith := SonatypePublisher,
-    organization := "com.lambdaminute.slinkywrappers",
+    organization := "com.lambdaminute",
     scalaVersion := "2.12.4"
   ))
 
 val slinkyVersion     = "0.3.2"
 val materialUiVersion = "1.0.0-beta.35"
+
+val prefixName = "slinky-wrappers"
+
+lazy val artifactNaming =
+  artifact in (Compile, packageBin) := {
+    val previous: Artifact = (artifact in (Compile, packageBin)).value
+    val newName            = s"${previous.name}"
+    println(s"Using new name: ${newName}")
+    previous.withName(newName)
+  }
 
 lazy val materialUi =
   project
@@ -30,16 +40,29 @@ lazy val materialUi =
     .settings(
       libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
       addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
-    )
+    ).withId(s"$prefixName-material-ui")
+
+lazy val semanticUi =
+  project
+    .in(file("semantic-ui"))
+    .enablePlugins(ScalaJSPlugin)
+    .settings(
+      libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
+      addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
+    ).withId(s"$prefixName-semantic-ui")
+
 lazy val demo = project
   .in(file("demo"))
   .enablePlugins(ScalaJSBundlerPlugin)
   .settings(
-    npmDependencies in Compile ++= Seq("react"                  -> "16.2.0",
-                                       "react-dom"              -> "16.2.0",
-                                       "react-proxy"            -> "1.1.8",
-                                       "material-ui"            -> materialUiVersion,
-                                       "material-ui-icons"      -> materialUiVersion),
+    npmDependencies in Compile ++= Seq(
+      "react"             -> "16.2.0",
+      "react-dom"         -> "16.2.0",
+      "react-proxy"       -> "1.1.8",
+      "material-ui"       -> materialUiVersion,
+      "material-ui-icons" -> materialUiVersion,
+      "semantic-ui-react" -> "0.78.2"
+    ),
     npmDevDependencies in Compile ++= Seq("file-loader"         -> "1.1.5",
                                           "style-loader"        -> "0.19.0",
                                           "css-loader"          -> "0.28.7",
@@ -55,3 +78,4 @@ lazy val demo = project
     addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
   )
   .dependsOn(materialUi)
+  .dependsOn(semanticUi)
