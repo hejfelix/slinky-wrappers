@@ -33,15 +33,28 @@ lazy val materialUi =
       libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
       addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
     )
+
+lazy val semanticUi =
+  project
+    .in(file("semantic-ui"))
+    .enablePlugins(ScalaJSPlugin)
+    .settings(
+      libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
+      addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
+    )
+
 lazy val demo = project
   .in(file("demo"))
   .enablePlugins(ScalaJSBundlerPlugin)
   .settings(
-    npmDependencies in Compile ++= Seq("react"                  -> "16.2.0",
-                                       "react-dom"              -> "16.2.0",
-                                       "react-proxy"            -> "1.1.8",
-                                       "material-ui"            -> materialUiVersion,
-                                       "material-ui-icons"      -> materialUiVersion),
+    npmDependencies in Compile ++= Seq(
+      "react"             -> "16.2.0",
+      "react-dom"         -> "16.2.0",
+      "react-proxy"       -> "1.1.8",
+      "material-ui"       -> materialUiVersion,
+      "material-ui-icons" -> materialUiVersion,
+      "semantic-ui-react" -> "0.78.2"
+    ),
     npmDevDependencies in Compile ++= Seq("file-loader"         -> "1.1.5",
                                           "style-loader"        -> "0.19.0",
                                           "css-loader"          -> "0.28.7",
@@ -57,3 +70,4 @@ lazy val demo = project
     addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
   )
   .dependsOn(materialUi)
+  .dependsOn(semanticUi)
