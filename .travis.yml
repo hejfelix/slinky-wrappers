@@ -7,7 +7,7 @@ jdk:
 deploy:
   on:
     tags: true
-after_success:
+script:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION 'materialUi/releaseEarly'; sbt ++$TRAVIS_SCALA_VERSION 'semanticUi/releaseEarly';
   fi
 before_install:
