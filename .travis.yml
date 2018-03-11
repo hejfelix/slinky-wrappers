@@ -15,11 +15,11 @@ deploy:
   github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
   keep-history: true
   on:
-    branch: build-web
+    branch: master
   local-dir: deploy
 script:
-#- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-semantic-ui/releaseEarly';
-#  sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-material-ui/releaseEarly'; fi
+- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-semantic-ui/releaseEarly';
+  sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-material-ui/releaseEarly'; fi
 - sbt ++$TRAVIS_SCALA_VERSION 'demo/fastOptJS::webpack'
 - ./bin/refresh_gh_pages.sh
 before_install:
