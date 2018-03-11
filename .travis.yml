@@ -10,6 +10,7 @@ deploy:
 script:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-semantic-ui/releaseEarly'; sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-material-ui/releaseEarly';
   fi
+- ./bin/refresh_gh_pages.sh
 before_install:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then openssl aes-256-cbc -K $encrypted_f717c0e11167_key
   -iv $encrypted_f717c0e11167_iv -in travis/secrets.tar.enc -out travis/secrets.tar
