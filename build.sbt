@@ -58,13 +58,13 @@ lazy val demo = project
   .enablePlugins(ScalaJSBundlerPlugin)
   .settings(
     npmDependencies in Compile ++= Seq(
-      "react"                  -> "16.2.0",
-      "react-dom"              -> "16.2.0",
-      "react-proxy"            -> "1.1.8",
-      "material-ui"            -> materialUiVersion,
-      "material-ui-icons"      -> materialUiVersion,
-      "semantic-ui-react"      -> "0.78.2",
-      "react-syntax-highlight" -> "15.3.1"
+      "react"                    -> "16.2.0",
+      "react-dom"                -> "16.2.0",
+      "react-proxy"              -> "1.1.8",
+      "material-ui"              -> materialUiVersion,
+      "material-ui-icons"        -> materialUiVersion,
+      "semantic-ui-react"        -> "0.78.2",
+      "react-syntax-highlighter" -> "7.0.2"
     ),
     npmDevDependencies in Compile ++= Seq("file-loader"         -> "1.1.5",
                                           "style-loader"        -> "0.19.0",

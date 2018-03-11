@@ -1,11 +1,9 @@
 package com.lambdaminute.slinkywrappers.web
 
-import com.lambdaminute.slinkywrappers.macros.Macros.sourceAsString
 import com.lambdaminute.slinkywrappers.materialui._
 import com.lambdaminute.slinkywrappers.materialui.color.primary
 import com.lambdaminute.slinkywrappers.materialui.variant._
 import com.lambdaminute.slinkywrappers.semanticui.{Button => SuiButton}
-import com.lambdaminute.slinkywrappers.web.highlight.Highlight
 import slinky.core.StatelessComponent
 import slinky.core.annotations.react
 import slinky.web.html.div

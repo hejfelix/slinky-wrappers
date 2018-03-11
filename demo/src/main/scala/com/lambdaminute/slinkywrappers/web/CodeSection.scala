@@ -1,13 +1,14 @@
 package com.lambdaminute.slinkywrappers.web
 
 import com.lambdaminute.slinkywrappers.semanticui._
-import com.lambdaminute.slinkywrappers.web.highlight.Highlight
+import com.lambdaminute.slinkywrappers.web.highlight.{HighlightStyle, SyntaxHighlighter}
 import slinky.core.Component
 import slinky.core.annotations.react
 import slinky.core.facade.ReactElement
 import org.scalafmt.Scalafmt.format
 
 @react class CodeSection extends Component {
+
   case class State(index: Int = -1)
   case class Props(code: String)
   override def initialState             = State()
@@ -26,7 +27,7 @@ import org.scalafmt.Scalafmt.format
       AccordionTitle(active = state.index == 0, onClick = handleClick)(Icon(name = IconName.`dropdown`),
                                                                        "Show demo source"),
       AccordionContent(active = state.index == 0)(
-        Highlight(lang = "scala", value = cutCode(props.code))
+        SyntaxHighlighter(language = "scala", style = HighlightStyle.hybrid)(cutCode(props.code))
       )
     )
 }
