@@ -59,12 +59,6 @@ import slinky.web.html.div
   private val body = TableBody(
     TableRow()(TableCell(collapsing = true)("Egg"), TableCell(collapsing = true)("Banana"), TableCell()("Cow"))
   )
-
-  private val accordion = Accordion()(
-    AccordionTitle()("Title"),
-    AccordionContent()("Content")
-  )
-
   override def render(): ReactElement =
     div(Table()(
           headers,
