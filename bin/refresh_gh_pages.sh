@@ -4,3 +4,7 @@ cp -v $TARGET/demo-fastopt-library.js .
 cp -v $TARGET/launcher-library.js .
 cp -v demo/public/index-fastopt.html .
 mv -v index-fastopt.html index.html
+
+git add --all
+git commit -m "refresh gh-pages"
+git push
