@@ -7,9 +7,21 @@ jdk:
 deploy:
   on:
     tags: true
+deploy:
+  edge:
+    branch: v1.8.47
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  on:
+    branch: master
+  local-dir: deploy
 script:
-- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-semantic-ui/releaseEarly'; sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-material-ui/releaseEarly';
-  fi
+- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-semantic-ui/releaseEarly';
+  sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-material-ui/releaseEarly'; fi
+- sbt ++$TRAVIS_SCALA_VERSION 'demo/fastOptJS::webpack'
+- ./bin/refresh_gh_pages.sh
 before_install:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then openssl aes-256-cbc -K $encrypted_f717c0e11167_key
   -iv $encrypted_f717c0e11167_iv -in travis/secrets.tar.enc -out travis/secrets.tar
@@ -20,3 +32,4 @@ env:
   - secure: 0H2dOiiZXq0GNBtqJohdge8NhpLimNc3AuVXTXSqQVMjx3liJtn52SHerpQpjVhg+xOGXEdB0iz2Ye37tl3w3XJq4/hLF84iG//Mwv0Cc7LEqgkMPTtxWf2DbAs3Au3oW683F1LLWciD2ltts7u6myWnAPC9YeHCvpfWw75FBrRSR/+bmDx0Fw2sI5xTvT7sVhON5sXxz+Y/bJpAeUZWZqymW+JkJXgv68gI5bxwchDbS77KhJ/TgEoPn2ne7BkeXcTkNV3bFobyPegQcZy1fvPsN+hO4FyislqZdLXxblFJGDYHCz/daxYu4KhI114X1bAJd93YUWive8aO0/OdymX7jfkfVGpqUPVRLXIn9Zr4igXyDqOqAyush9F/5fWp8+zpw/GIT+9dKmP5GYrtT03pVFdZnbUILuV+LMdNVrq6fiolEsxHkNN78rJCC4vilmrMjfZCbD78ZwxRCGWrlAIBLjfPQK7WEueFiJI4bS2UZ0uC9KV+nksnUx21iuBj//SiURvms7n0O+56sWCusLKv+jXx+/gN1Eb6vlSH97j0amg5vfKm0r4o5pOcXxwcQ/BYjnfwvV2cxvtWt3lvIK4FP5Pnkd6RlajmnD29hA1WSyVymy1wu+g8ygTlrAhrX1VFXRXrBohNU45+RgcFgSOt6o3sXVIEljKuowmBFJE=
   - secure: l5LrREtxoWvEz4wEaD6tTS+hH/FP5cRHguLdTBa2ORt8VpWqek6RWg70Ub4AxdDMmbBfHlYvuzISK/EQbd394oiS1D/lluFn2SQFBec/2F4AlI6i1hUClaz8CTef9QaOEONUrLbaOJIYvfAbWTN7ls4aybpNqAuqgMGr6N9d2TdrmwP7x1ByPE3vlFYdaUcmpF68cY3wOf/aFrwjPPPbliJU7itmwpxBSSKWgX2PdLzMwp+Iv7HiZhybPW6jxcHkLdrVoWBSCswIZjaxqu8grbncTSEG5rqHyUfVCm0jGa6YpM7+vaCvvsHBKuLwGjxxj8A2eC7AV1zchAgxmPu6HQ/VkNnEbdVIBAxfuQ0e1YgUYcSXbmLUD7PPHD5qUwBZnGm9CH2CgWzBp7kIcWYgc9I1R340ji6CKtGiafy7JtqeK9yVVVGG91WvgZ0yAduCQnmohYcdpxTP45hkQqVR8y5hG/fEJDyhb+3Pidbl5sBz8hfRhWurakdpT0nbsjc8YxtttYXwycnEnN+pdK/sa46ZX5sTk/aZiUrwID2E6hcB6IY68qliMY3PyJPZAcxqPMrKQU9JUO9mmC3jMig0LaAbDLu12X13/dbazoMZ7srh6gOtkuGuvfSrpwh/Bx/QBAIQV1WMUSm0MCniwyBXt63w1ughnDxIWNG8pFVFZkM=
   - secure: djiaWokfumIby9NliXz4zCh8mwUH2XejKEXMTQhXnxFJJX3fA1rBE74UKh7fMh9OYmcKdGqfxj2zoLrt6V6ojwtyZPu2JjGIAoCo/7EjouOOLmh03trsq9wn4X6PT2DtmRnnigtTFMCdCvmIefy+XZN3XPR2jtUdCzqFa6Lim6pycedyP4VyIjsqANrU6/chl06mcbZBZI6u65KZgujrg3kwNo40MMlyj2iF1VynwsjdKAJbs83otoMFCJdXj6Nd5gENyj08oaiaHis3NX4vzjCiC5gvTUWbWd6NuyDseaisg4aX12dxPGW/vfMgjEXMwe0k29y8FTdC7Bha4yzcOcvQrTYjUxFDqn/mWCu8AqLbFnML9yMIidF2oGVgPUzBDAlAFYt7MMqyHH8vhCzHWdJs/w/fAq9HHcdEpmLvGaU1Jtd3/M3NYLDHj1HUz1fJ7ZZy7TN+u2jdQRf2PEm6vrchESd99ssEPU1z62VUoaelUvkAP3CmroEOAoTrIhykDNHZQOBQ0hjpkCUBMIgUoBoGlFkg6b4B4OKdr9HyJdgKXp2LPBuLPCJs9NNqrxkvBsGdGVfZ90smjKaFMkx+JjRpZuuZm5+yFrj20z+AowMpOl6KDc7jYwfqK6E3CVVK7UxWpPmnB+CvW45k3urJNh0tLz5fVXS50mcjKtDX/Nk=
+  - secure: BW+NL5KOiOdriKBbRZYf0ikRo6WFO5Wn0yJ5DqRbF2XFm58eElKb6SV95sapXj2/1PLsWH+SaIFHs7KMi2zGb4LiWt5xUB0bEBzyAKqx88/AaD5O9pljcYWyndx35lTPirwKZdqhGCkTPMRmhsHy+/VRUa9Y7DEaJGSmfQdNoydGVEAlGWitTaVIPbkPCRO8VoWcbtzoIxo/vm4DxKQV99lkCMdkvth3APKZCyx18jSC6nbi01QklkcVCLhnNtciB6UHmVrKKLGvMhJonam5W7/tkWyRA1t8xVx+aqJp6/v1LThMhA8IPR5oRfgcxp0XmGXgV+f02EV3fbEqRbk/QDY5f2RBrDp9Z3P1Q1ZswAhej2SNQhsDCk/sKI2RXQO+viKhSjQQju6CnUmda9yXotmoAXjB5aJZYG9x580mjWNOxvarOfw/vjUdKA/jWglitrhefMj/8uI3ys1KMlzyrB8GLwSbrYa12s3tuyPof3Txkj4gObg1oCaWCbTE5tDnC4NtOaCPGpE1HPYj5xV46i7Ea6VqysJwRO8omGzWwTRZ8HYfNwg4pZthdFV6BkKY39ccI5u6qFIrKtzMdRD6qqH/Ye8rrJ8C97DPGTmsvcN3DVGCFPh9z9K+kSMh30S/Vj75IfHzFNWHG0KRMI+2q2Wz30uIt3wwI6rCmVpRWAM=
