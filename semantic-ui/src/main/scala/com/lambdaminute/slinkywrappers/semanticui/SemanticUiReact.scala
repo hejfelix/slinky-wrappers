@@ -6,6 +6,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.{|, UndefOr}
 import slinky.core.annotations.react
+import slinky.core.facade.ReactElement
 import slinky.core.{ExternalComponent, ExternalComponentNoProps}
 import slinky.readwrite.Writer
 
@@ -69,7 +70,12 @@ object SemanticUiReact extends js.Object {
 
   // Modules
 
-  val Accordion: js.Object  = js.native
+  @js.native
+  object Accordion extends js.Object {
+    val Accordion: js.Object = js.native
+    val Content: js.Object   = js.native
+    val Title: js.Object     = js.native
+  }
   val Checkbox: js.Object   = js.native
   val Dimmer: js.Object     = js.native
   val Dropdown: js.Object   = js.native
@@ -209,4 +215,49 @@ object Container extends ExternalComponentNoProps {
       size: UndefOr[Size] = js.undefined,
   )
   override val component = SemanticUiReact.Icon
+}
+
+@react object Accordion extends ExternalComponent {
+  case class Props(
+      className: UndefOr[String] = js.undefined,
+      fluid: UndefOr[Boolean] = js.undefined,
+      inverted: UndefOr[Boolean] = js.undefined,
+      styled: UndefOr[Boolean] = js.undefined,
+  )
+  override val component = SemanticUiReact.Accordion
+}
+
+@react object AccordionAccordion extends ExternalComponent {
+  case class Props(
+      activeIndex: UndefOr[js.Object] = js.undefined,
+      as: UndefOr[js.Object] = js.undefined,
+      className: UndefOr[String] = js.undefined,
+      defaultActiveIndex: UndefOr[Int] = js.undefined,
+      exclusive: UndefOr[Boolean] = js.undefined,
+      onTitleClick: UndefOr[EventHandler] = js.undefined,
+      panels: UndefOr[List[ReactElement]] = js.undefined
+  )
+  override val component = SemanticUiReact.Accordion.Accordion
+}
+
+@react object AccordionContent extends ExternalComponent {
+  case class Props(
+      active: UndefOr[Boolean] = js.undefined,
+      as: UndefOr[String] = js.undefined,
+      className: UndefOr[String] = js.undefined,
+      content: UndefOr[ReactElement] = js.undefined
+  )
+  override val component = SemanticUiReact.Accordion.Content
+}
+
+@react object AccordionTitle extends ExternalComponent {
+  case class Props(
+      active: UndefOr[Boolean] = js.undefined,
+      as: UndefOr[String] = js.undefined,
+      className: UndefOr[String] = js.undefined,
+      content: UndefOr[ReactElement] = js.undefined,
+      index: UndefOr[String | Int] = js.undefined,
+      onClick: UndefOr[EventHandler] = js.undefined
+  )
+  override val component = SemanticUiReact.Accordion.Title
 }

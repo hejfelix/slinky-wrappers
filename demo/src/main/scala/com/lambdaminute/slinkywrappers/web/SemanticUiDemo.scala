@@ -1,11 +1,12 @@
 package com.lambdaminute.slinkywrappers.web
 
+import com.lambdaminute.slinkywrappers.macros.Macros.sourceAsString
 import com.lambdaminute.slinkywrappers.semanticui._
 import com.lambdaminute.slinkywrappers.semanticui.menu.{Menu, MenuItem, MenuMenu}
 import com.lambdaminute.slinkywrappers.semanticui.table._
-import slinky.core.{Component, StatelessComponent}
 import slinky.core.annotations.react
 import slinky.core.facade.ReactElement
+import slinky.core.{Component, StatelessComponent}
 import slinky.web.html.div
 
 @react class SemanticUiDemo extends StatelessComponent {
@@ -59,8 +60,15 @@ import slinky.web.html.div
     TableRow()(TableCell(collapsing = true)("Egg"), TableCell(collapsing = true)("Banana"), TableCell()("Cow"))
   )
 
-  override def render(): ReactElement = Table()(
-    headers,
-    body
+  private val accordion = Accordion()(
+    AccordionTitle()("Title"),
+    AccordionContent()("Content")
   )
+
+  override def render(): ReactElement =
+    div(Table()(
+          headers,
+          body
+        ),
+        CodeSection(code = sourceAsString))
 }
