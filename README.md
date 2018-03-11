@@ -1,2 +1,0 @@
-# slinky-wrappers
-Slinky wrappers
