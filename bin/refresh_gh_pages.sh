@@ -1,26 +1,7 @@
 #!/bin/bash
 TARGET=demo/target/scala-2.12/scalajs-bundler/main
-cp -v $TARGET/demo-fastopt-library.js .
-cp -v $TARGET/launcher-library.js .
-cp -v demo/public/index-fastopt.html .
-mv -v index-fastopt.html index.html
-
-setup_git() {
-  git config --global user.email "travis@travis-ci.org"
-  git config --global user.name "Travis CI"
-}
-
-commit_website_files() {
-  git checkout -b gh-pages
-  git add --all
-  git commit -m "refresh gh-pages $TRAVIS_BUILD_NUMBER"
-}
-
-upload_files() {
-  git remote add origin-pages https://${GH_TOKEN}@github.com/slinky-wrappers/resources.git > /dev/null 2>&1
-  git push --set-upstream origin-pages gh-pages
-}
-
-setup_git
-commit_website_files
-upload_files
+mkdir -p deploy
+cp -v $TARGET/demo-fastopt-library.js ./deploy
+cp -v $TARGET/launcher-library.js ./deploy
+cp -v demo/public/index-fastopt.html ./deploy
+mv -v ./deploy/index-fastopt.html ./deploy/index.html

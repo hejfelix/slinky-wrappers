@@ -7,6 +7,14 @@ jdk:
 deploy:
   on:
     tags: true
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  on:
+    branch: build-web
+  local-dir: deploy
 script:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-semantic-ui/releaseEarly';
   sbt ++$TRAVIS_SCALA_VERSION 'slinky-wrappers-material-ui/releaseEarly'; fi
