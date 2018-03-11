@@ -43,12 +43,13 @@ import slinky.web.html.div
     subMenuNames.map(n => MenuItem(name = n, active = state.selected == n, onClick = onClick).withKey(n))
 
   override def render(): ReactElement =
-    Menu()(
-      items,
-      MenuMenu(position = VerticalPosition.right)(
-        subItems,
-      )
-    )
+    div(Menu()(
+          items,
+          MenuMenu(position = VerticalPosition.right)(
+            subItems,
+          )
+        ),
+        CodeSection(code = sourceAsString))
 }
 
 @react class TableDemo extends StatelessComponent {

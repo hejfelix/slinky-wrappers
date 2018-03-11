@@ -12,8 +12,15 @@ import org.scalafmt.Scalafmt.format
   case class Props(code: String)
   override def initialState             = State()
   private val handleClick: EventHandler = (_, _) => this.setState(s => if (s.index == 0) State(-1) else State(0))
-  private def cutCode(code: String) =
-    format(code.split("\n").filter(!_.contains("null")).mkString("\n").split("}").take(2).mkString("}").trim + "\n}").get
+  private def cutCode(code: String) = {
+    val split = code
+      .split("}")
+      .dropRight(2)
+      .mkString("}")
+      .trim + "\n}"
+    println(split)
+    format(split).get
+  }
   override def render(): ReactElement =
     Accordion()(
       AccordionTitle(active = state.index == 0, onClick = handleClick)(Icon(name = IconName.`dropdown`),
