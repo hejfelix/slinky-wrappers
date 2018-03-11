@@ -3,6 +3,7 @@ package com.lambdaminute.slinkywrappers.web
 import com.lambdaminute.slinkywrappers.materialui._
 import com.lambdaminute.slinkywrappers.materialui.color.primary
 import com.lambdaminute.slinkywrappers.materialui.variant._
+import com.lambdaminute.slinkywrappers.semanticui.{Button => SuiButton}
 import slinky.core.StatelessComponent
 import slinky.core.annotations.react
 import slinky.web.html.div
@@ -10,8 +11,6 @@ import slinky.web.html.div
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.literal
 import scala.scalajs.js.annotation.JSImport
-
-import com.lambdaminute.slinkywrappers.semanticui.{ Button => SuiButton }
 
 @JSImport("resources/App.css", JSImport.Default)
 @js.native
@@ -37,6 +36,7 @@ class Boob[T] {
     }
   }
   private val daftTheme: Theme = MaterialUi.createMuiTheme(themeSettings)
+
 
   def render() = {
 

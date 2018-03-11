@@ -25,13 +25,13 @@ val materialUiVersion = "1.0.0-beta.35"
 
 val prefixName = "slinky-wrappers"
 
-lazy val artifactNaming =
-  artifact in (Compile, packageBin) := {
-    val previous: Artifact = (artifact in (Compile, packageBin)).value
-    val newName            = s"${previous.name}"
-    println(s"Using new name: ${newName}")
-    previous.withName(newName)
-  }
+lazy val macros = project
+  .in(file("macros"))
+  .settings(
+    libraryDependencies ++= Seq(
+      "org.scala-lang" % "scala-reflect"  % scalaVersion.value,
+      "org.scala-lang" % "scala-compiler" % scalaVersion.value
+    ))
 
 lazy val materialUi =
   project
@@ -40,7 +40,8 @@ lazy val materialUi =
     .settings(
       libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
       addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
-    ).withId(s"$prefixName-material-ui")
+    )
+    .withId(s"$prefixName-material-ui")
 
 lazy val semanticUi =
   project
@@ -49,27 +50,30 @@ lazy val semanticUi =
     .settings(
       libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
       addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
-    ).withId(s"$prefixName-semantic-ui")
+    )
+    .withId(s"$prefixName-semantic-ui")
 
 lazy val demo = project
   .in(file("demo"))
   .enablePlugins(ScalaJSBundlerPlugin)
   .settings(
     npmDependencies in Compile ++= Seq(
-      "react"             -> "16.2.0",
-      "react-dom"         -> "16.2.0",
-      "react-proxy"       -> "1.1.8",
-      "material-ui"       -> materialUiVersion,
-      "material-ui-icons" -> materialUiVersion,
-      "semantic-ui-react" -> "0.78.2"
+      "react"                    -> "16.2.0",
+      "react-dom"                -> "16.2.0",
+      "react-proxy"              -> "1.1.8",
+      "material-ui"              -> materialUiVersion,
+      "material-ui-icons"        -> materialUiVersion,
+      "semantic-ui-react"        -> "0.78.2",
+      "react-syntax-highlighter" -> "7.0.2"
     ),
     npmDevDependencies in Compile ++= Seq("file-loader"         -> "1.1.5",
                                           "style-loader"        -> "0.19.0",
                                           "css-loader"          -> "0.28.7",
                                           "html-webpack-plugin" -> "2.30.1",
                                           "copy-webpack-plugin" -> "4.2.0"),
-    libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
-    libraryDependencies += "me.shadaj" %%% "slinky-hot" % slinkyVersion,
+    libraryDependencies += "me.shadaj"    %%% "slinky-web"    % slinkyVersion,
+    libraryDependencies += "me.shadaj"    %%% "slinky-hot"    % slinkyVersion,
+    libraryDependencies += "com.geirsson" %%% "scalafmt-core" % "1.4.0",
     scalacOptions += "-P:scalajs:sjsDefinedByDefault",
     webpackConfigFile in fastOptJS := Some(baseDirectory.value / "webpack-fastopt.config.js"),
     webpackConfigFile in fullOptJS := Some(baseDirectory.value / "webpack-opt.config.js"),
@@ -79,3 +83,4 @@ lazy val demo = project
   )
   .dependsOn(materialUi)
   .dependsOn(semanticUi)
+  .dependsOn(macros)
