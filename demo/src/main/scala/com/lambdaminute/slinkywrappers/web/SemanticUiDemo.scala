@@ -3,6 +3,7 @@ package com.lambdaminute.slinkywrappers.web
 import com.lambdaminute.slinkywrappers.macros.Macros.sourceAsString
 import com.lambdaminute.slinkywrappers.semanticui._
 import com.lambdaminute.slinkywrappers.semanticui.table._
+import com.lambdaminute.slinkywrappers.web.semantic.ImageDemo
 import slinky.core.StatelessComponent
 import slinky.core.annotations.react
 import slinky.core.facade.ReactElement
@@ -14,17 +15,17 @@ import slinky.web.html.div
 
   override def render(): ReactElement = div(
     Header()("Semantic UI Wrappers"),
-    Button(primary = true, animated = "vertical")(ButtonContent(visible = true)("Go"),
-                                                  ButtonContent(hidden = true)(Icon(name = IconName.`arrow right`))),
-    Button()("Secondary"),
-    MenuDemo(),
-    TableDemo(),
+    Container()(
+      Button(primary = true, animated = "vertical")(ButtonContent(visible = true)("Go"),
+                                                    ButtonContent(hidden = true)(Icon(name = IconName.`arrow right`))),
+      Button()("Secondary"),
+      MenuDemo(),
+      TableDemo(),
+      ImageDemo()
+    )
   )
 
 }
-
-
-
 @react class TableDemo extends StatelessComponent {
   type Props = Unit
 

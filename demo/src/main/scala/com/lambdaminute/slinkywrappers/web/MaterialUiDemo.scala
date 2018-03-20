@@ -3,7 +3,7 @@ package com.lambdaminute.slinkywrappers.web
 import com.lambdaminute.slinkywrappers.materialui._
 import com.lambdaminute.slinkywrappers.materialui.color.primary
 import com.lambdaminute.slinkywrappers.materialui.variant._
-import com.lambdaminute.slinkywrappers.semanticui.{Button => SuiButton}
+import com.lambdaminute.slinkywrappers.semanticui.{Container, Button => SuiButton}
 import slinky.core.StatelessComponent
 import slinky.core.annotations.react
 import slinky.web.html.div
@@ -37,14 +37,13 @@ class Boob[T] {
   }
   private val daftTheme: Theme = MaterialUi.createMuiTheme(themeSettings)
 
-
   def render() = {
 
     val avatar = Avatar(src = "https://www.gravatar.com/avatar/04801ed5aa62e5cfaedb25314fc9660d")
     val toolbar =
       Toolbar()(Typography(variant = textvariant.title, color = textcolor.inherit)("Material UI", avatar))
     MuiThemeProvider(theme = daftTheme)(
-      div(
+      Container()(
         AppBar(color = color.default, position = position.static)(toolbar),
         Button(color = color.default, variant = raised, size = size.small)("Demo Button"),
         Button(color = color.primary, variant = flat, size = size.medium)("Demo Button2"),

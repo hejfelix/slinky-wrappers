@@ -9,8 +9,11 @@ import slinky.core.facade.ReactElement
 import slinky.web.html.div
 
 @react class MenuDemo extends Component {
+
   case class State(selected: String = "A")
+
   case class Props()
+
   override def initialState = State()
 
   private val menuNames    = List("Menu Item A", "Menu Item B", "Menu Item C")
@@ -22,9 +25,13 @@ import slinky.web.html.div
     this.setState(_.copy(selected = clickedName))
   }
 
-  private def items = menuNames.map(n => MenuItem(name = n, active = state.selected == n, onClick = onClick).withKey(n))
+  private def items =
+    menuNames.map(n =>
+      MenuItem(name = n, active = state.selected == n, onClick = onClick).withKey(n))
+
   private def subItems =
-    subMenuNames.map(n => MenuItem(name = n, active = state.selected == n, onClick = onClick).withKey(n))
+    subMenuNames.map(n =>
+      MenuItem(name = n, active = state.selected == n, onClick = onClick).withKey(n))
 
   override def render(): ReactElement =
     div(Menu()(

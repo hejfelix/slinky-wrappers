@@ -10,11 +10,38 @@ import scala.scalajs.js.|
 package object semanticui {
   type EventHandler = js.Function2[Event, js.Dynamic, Unit]
 
+  object Spacing {
+    trait Writable {
+      self =>
+      implicit val writer: Writer[self.type] = _.toString.asInstanceOf[js.Object]
+    }
+    object bottom         extends Writable
+    object middle         extends Writable
+    object top            extends Writable
+    object left           extends Writable
+    object right          extends Writable
+    object center         extends Writable
+    object justified      extends Writable
+    object `left corner`  extends Writable
+    object `right corner` extends Writable
+  }
+
+  import Spacing._
+
+  type VerticalAlign = bottom.type | middle.type | top.type
+
   sealed trait VerticalPosition
   object VerticalPosition {
     case object left  extends VerticalPosition
     case object right extends VerticalPosition
     implicit val writer: Writer[VerticalPosition] = _.toString.asInstanceOf[js.Object]
+  }
+
+  sealed trait CenterPosition
+  object CenterPosition {
+    case object center    extends CenterPosition
+    case object justified extends CenterPosition
+    implicit val writer: Writer[CenterPosition] = _.toString.asInstanceOf[js.Object]
   }
 
   sealed trait AttachedVertical
