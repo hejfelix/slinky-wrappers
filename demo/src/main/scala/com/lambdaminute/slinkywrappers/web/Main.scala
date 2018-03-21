@@ -1,10 +1,9 @@
 package com.lambdaminute.slinkywrappers.web
 
-import com.lambdaminute.slinkywrappers.semanticui.Container
 import org.scalajs.dom
 import slinky.hot
 import slinky.web.ReactDOM
-import slinky.web.html.{div, hr}
+import slinky.web.html.div
 
 import scala.scalajs.js.annotation.{JSExportTopLevel, JSImport}
 import scala.scalajs.{LinkingInfo, js}
@@ -29,6 +28,6 @@ object Main {
       elem
     }
 
-    ReactDOM.render(div(MaterialUiDemo(), hr(), SemanticUiDemo()), container)
+    ReactDOM.render(div(SemanticUiDemo()), container)
   }
 }

@@ -6,7 +6,6 @@ import com.lambdaminute.slinkywrappers.materialui.variant._
 import com.lambdaminute.slinkywrappers.semanticui.{Container, Button => SuiButton}
 import slinky.core.StatelessComponent
 import slinky.core.annotations.react
-import slinky.web.html.div
 
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.literal

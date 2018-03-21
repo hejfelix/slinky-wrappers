@@ -31,9 +31,21 @@ object SemanticUiReact extends js.Object {
   object Image extends js.Object {
     val Group: js.Object = js.native
   }
-  val Input: js.Object   = js.native
-  val Label: js.Object   = js.native
-  val List: js.Object    = js.native
+  val Input: js.Object = js.native
+  @js.native
+  object Label extends js.Object {
+    val Detail: js.Object = js.native
+    val Group: js.Object  = js.native
+  }
+  @js.native
+  object List extends js.Object {
+    val Content: js.Object     = js.native
+    val Description: js.Object = js.native
+    val Header: js.Object      = js.native
+    val Icon: js.Object        = js.native
+    val Item: js.Object        = js.native
+    val List: js.Object        = js.native
+  }
   val Loader: js.Object  = js.native
   val Rail: js.Object    = js.native
   val Reveal: js.Object  = js.native
@@ -44,8 +56,11 @@ object SemanticUiReact extends js.Object {
 
   val Breadcrumb: js.Object = js.native
   val Form: js.Object       = js.native
-  val Grid: js.Object       = js.native
-  val Message: js.Object    = js.native
+  object Grid extends js.Object {
+    val Column: js.Object = js.native
+    val Row: js.Object    = js.native
+  }
+  val Message: js.Object = js.native
 
   @js.native
   object Menu extends js.Object {

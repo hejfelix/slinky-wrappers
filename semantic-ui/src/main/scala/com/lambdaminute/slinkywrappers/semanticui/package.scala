@@ -8,22 +8,39 @@ import slinky.readwrite.Writer
 import scala.scalajs.js.|
 
 package object semanticui {
+
   type EventHandler = js.Function2[Event, js.Dynamic, Unit]
 
+  trait Writable {
+    self =>
+    implicit val writer: Writer[self.type] = _.toString.asInstanceOf[js.Object]
+  }
+
+  object Adverbs {
+    object very         extends Writable
+    object internally   extends Writable
+    object vertically   extends Writable
+    object horizontally extends Writable
+  }
+
   object Spacing {
-    trait Writable {
-      self =>
-      implicit val writer: Writer[self.type] = _.toString.asInstanceOf[js.Object]
-    }
-    object bottom         extends Writable
-    object middle         extends Writable
-    object top            extends Writable
-    object left           extends Writable
-    object right          extends Writable
-    object center         extends Writable
-    object justified      extends Writable
+
+    object bottom    extends Writable
+    object middle    extends Writable
+    object top       extends Writable
+    object left      extends Writable
+    object right     extends Writable
+    object center    extends Writable
+    object justified extends Writable
+
     object `left corner`  extends Writable
     object `right corner` extends Writable
+
+    object `top right`    extends Writable
+    object `top left`     extends Writable
+    object `bottom left`  extends Writable
+    object `bottom right` extends Writable
+
   }
 
   import Spacing._
@@ -129,6 +146,8 @@ package object semanticui {
     implicit val writer: Writer[Size] = _.toString.asInstanceOf[js.Object]
   }
 
+  type Number = Width
+  type Columns = Width
   sealed trait Width
   object Width {
     case object `1`        extends Width

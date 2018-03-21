@@ -1,29 +1,46 @@
 package com.lambdaminute.slinkywrappers.web
 
 import com.lambdaminute.slinkywrappers.macros.Macros.sourceAsString
+import com.lambdaminute.slinkywrappers.semanticui.Width.{`16` => _16, `2` => _2, `8` => _8}
 import com.lambdaminute.slinkywrappers.semanticui._
+import com.lambdaminute.slinkywrappers.semanticui.menu.{Menu, MenuItem}
 import com.lambdaminute.slinkywrappers.semanticui.table._
-import com.lambdaminute.slinkywrappers.web.semantic.ImageDemo
-import slinky.core.StatelessComponent
+import com.lambdaminute.slinkywrappers.web.semantic.ListDemo
 import slinky.core.annotations.react
 import slinky.core.facade.ReactElement
+import slinky.core.{Component, StatelessComponent}
 import slinky.web.html.div
+import Width.{`3` => _3, `13` => _13}
+@react class SemanticUiDemo extends Component {
 
-@react class SemanticUiDemo extends StatelessComponent {
-
+  case class State(activeElement: ReactElement = div())
   type Props = Unit
 
-  override def render(): ReactElement = div(
-    Header()("Semantic UI Wrappers"),
-    Container()(
-      Button(primary = true, animated = "vertical")(ButtonContent(visible = true)("Go"),
-                                                    ButtonContent(hidden = true)(Icon(name = IconName.`arrow right`))),
-      Button()("Secondary"),
-      MenuDemo(),
-      TableDemo(),
-      ImageDemo()
+  private val demos = List(
+    "Table" -> TableDemo(),
+    "Menu"  -> MenuDemo(),
+    "List"  -> ListDemo()
+  )
+
+  private def grid = Grid(columns = _2)(
+    GridRow()(
+      GridColumn(width = _3)(menu),
+      GridColumn(width = _13)(state.activeElement)
     )
   )
+
+  override def initialState = State()
+
+  private def onClickAction(changeTo: ReactElement): EventHandler =
+    (_, _) => this.setState(_.copy(activeElement = changeTo))
+
+  private def menu = Menu(vertical = true)(
+    demos.map {
+      case (name, element) => MenuItem(name = name, onClick = onClickAction(element)).withKey(name)
+    }
+  )
+
+  override def render(): ReactElement = div(grid)
 
 }
 @react class TableDemo extends StatelessComponent {
