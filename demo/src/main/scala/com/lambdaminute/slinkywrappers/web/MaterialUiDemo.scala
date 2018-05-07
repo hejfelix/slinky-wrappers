@@ -40,9 +40,9 @@ class Boob[T] {
 
     val avatar = Avatar(src = "https://www.gravatar.com/avatar/04801ed5aa62e5cfaedb25314fc9660d")
     val toolbar =
-      Toolbar()(Typography(variant = textvariant.title, color = textcolor.inherit)("Material UI", avatar))
+      Toolbar(Typography(variant = textvariant.title, color = textcolor.inherit)("Material UI", avatar))
     MuiThemeProvider(theme = daftTheme)(
-      Container()(
+      Container(
         AppBar(color = color.default, position = position.static)(toolbar),
         Button(color = color.default, variant = raised, size = size.small)("Demo Button"),
         Button(color = color.primary, variant = flat, size = size.medium)("Demo Button2"),

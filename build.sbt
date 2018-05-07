@@ -20,7 +20,7 @@ inThisBuild(
     scalaVersion := "2.12.4"
   ))
 
-val slinkyVersion     = "0.3.2"
+val slinkyVersion     = "0.4.2"
 val materialUiVersion = "1.0.0-beta.35"
 
 val prefixName = "slinky-wrappers"
@@ -58,8 +58,8 @@ lazy val demo = project
   .enablePlugins(ScalaJSBundlerPlugin)
   .settings(
     npmDependencies in Compile ++= Seq(
-      "react"                    -> "16.2.0",
-      "react-dom"                -> "16.2.0",
+      "react"                    -> "16.3.2",
+      "react-dom"                -> "16.3.2",
       "react-proxy"              -> "1.1.8",
       "material-ui"              -> materialUiVersion,
       "material-ui-icons"        -> materialUiVersion,

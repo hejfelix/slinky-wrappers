@@ -23,7 +23,7 @@ import Width.{`3` => _3, `13` => _13}
   )
 
   private def grid = Grid(columns = _2)(
-    GridRow()(
+    GridRow(
       GridColumn(width = _3)(menu),
       GridColumn(width = _13)(state.activeElement)
     )
@@ -46,13 +46,13 @@ import Width.{`3` => _3, `13` => _13}
 @react class TableDemo extends StatelessComponent {
   type Props = Unit
 
-  private val headers = TableHeader(TableRow()(TableHeaderCell(colSpan = 2)("Things"), TableHeaderCell()("Co-things")))
+  private val headers = TableHeader(TableRow(TableHeaderCell(colSpan = 2)("Things"), TableHeaderCell("Co-things")))
 
   private val body = TableBody(
-    TableRow()(TableCell(collapsing = true)("Egg"), TableCell(collapsing = true)("Banana"), TableCell()("Cow"))
+    TableRow(TableCell(collapsing = true)("Egg"), TableCell(collapsing = true)("Banana"), TableCell("Cow"))
   )
   override def render(): ReactElement =
-    div(Table()(
+    div(Table(
           headers,
           body
         ),

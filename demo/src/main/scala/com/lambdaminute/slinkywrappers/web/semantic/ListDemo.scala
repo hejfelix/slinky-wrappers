@@ -13,7 +13,7 @@ import slinky.web.html.div
   type Props = Unit
 
   private val icons = List(IconName.`google`, IconName.`hacker news`, IconName.`computer`, IconName.`magic`)
-  private val list  = SList()(icons.map(i => ListItem()(ListIcon(name = i), ListContent()(i.toString))))
+  private val list  = SList(icons.map(i => ListItem(ListIcon(name = i), ListContent(i.toString))))
 
   override def render(): ReactElement =
     div(list, CodeSection(code = sourceAsString))
