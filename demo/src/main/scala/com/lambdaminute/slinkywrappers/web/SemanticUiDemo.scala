@@ -6,6 +6,8 @@ import com.lambdaminute.slinkywrappers.semanticui._
 import com.lambdaminute.slinkywrappers.semanticui.menu.{Menu, MenuItem}
 import com.lambdaminute.slinkywrappers.semanticui.table._
 import com.lambdaminute.slinkywrappers.web.semantic.ListDemo
+import com.lambdaminute.slinkywrappers.reactrouter.RouteProps
+
 import slinky.core.annotations.react
 import slinky.core.facade.ReactElement
 import slinky.core.{Component, StatelessComponent}
@@ -14,7 +16,7 @@ import Width.{`3` => _3, `13` => _13}
 @react class SemanticUiDemo extends Component {
 
   case class State(activeElement: ReactElement = div())
-  type Props = Unit
+  type Props = RouteProps
 
   private val demos = List(
     "Table" -> TableDemo(),

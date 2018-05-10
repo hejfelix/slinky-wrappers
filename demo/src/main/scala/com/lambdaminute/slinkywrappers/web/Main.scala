@@ -1,12 +1,16 @@
 package com.lambdaminute.slinkywrappers.web
 
+import com.lambdaminute.slinkywrappers.reactrouter.{BrowserRouter, Link, Route, RouteProps}
 import org.scalajs.dom
+import slinky.core.StatelessComponent
+import slinky.core.annotations.react
+import slinky.core.facade.ReactElement
 import slinky.hot
 import slinky.web.ReactDOM
-import slinky.web.html.div
+import slinky.web.html._
 
 import scala.scalajs.js.annotation.{JSExportTopLevel, JSImport}
-import scala.scalajs.{LinkingInfo, js}
+import scala.scalajs.{js, LinkingInfo}
 
 @JSImport("resources/index.css", JSImport.Default)
 @js.native
@@ -28,6 +32,35 @@ object Main {
       elem
     }
 
-    ReactDOM.render(div(SemanticUiDemo()), container)
+    ReactDOM.render(div(Demos()), container)
   }
+}
+
+@react class Demos extends StatelessComponent {
+  type Props = Unit
+  def render(): ReactElement = {
+    val route1        = "/"
+    val semanticRoute = "/semantic"
+    val materialRoute = "/material"
+    BrowserRouter(
+      div(
+        ul(
+          li(Link(to = route1)("Home")),
+          li(Link(to = semanticRoute)("Semantic UI Demo")),
+          li(Link(to = materialRoute)("Material UI Demo"))
+        ),
+        Route(exact = true, path = route1, component = Page1),
+        Route(exact = true, path = semanticRoute, component = Page1),
+        Route(exact = true, path = materialRoute, component = SemanticUiDemo)
+      )
+    )
+  }
+
+}
+
+@react class Page1 extends StatelessComponent {
+  type Props = RouteProps
+  def render(): ReactElement = div(
+    h1(props.`match`.path)
+  )
 }

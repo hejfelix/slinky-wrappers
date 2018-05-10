@@ -21,7 +21,7 @@ inThisBuild(
   ))
 
 val slinkyVersion     = "0.4.2"
-val materialUiVersion = "1.0.0-beta.35"
+val materialUiVersion = "1.0.0-beta.43"
 
 val prefixName = "slinky-wrappers"
 
@@ -53,6 +53,16 @@ lazy val semanticUi =
     )
     .withId(s"$prefixName-semantic-ui")
 
+lazy val reactRouter =
+  project
+    .in(file("react-router"))
+    .enablePlugins(ScalaJSPlugin)
+    .settings(
+      libraryDependencies += "me.shadaj" %%% "slinky-web" % slinkyVersion,
+      addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
+    )
+    .withId(s"$prefixName-react-router")
+
 lazy val demo = project
   .in(file("demo"))
   .enablePlugins(ScalaJSBundlerPlugin)
@@ -62,7 +72,8 @@ lazy val demo = project
       "react-dom"                -> "16.3.2",
       "react-proxy"              -> "1.1.8",
       "material-ui"              -> materialUiVersion,
-      "material-ui-icons"        -> materialUiVersion,
+      "@material-ui/icons"       -> materialUiVersion,
+      "react-router-dom"         -> "4.2.2",
       "semantic-ui-react"        -> "0.78.2",
       "react-syntax-highlighter" -> "7.0.2"
     ),
@@ -83,4 +94,5 @@ lazy val demo = project
   )
   .dependsOn(materialUi)
   .dependsOn(semanticUi)
+  .dependsOn(reactRouter)
   .dependsOn(macros)

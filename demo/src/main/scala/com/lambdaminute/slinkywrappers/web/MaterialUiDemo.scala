@@ -3,6 +3,7 @@ package com.lambdaminute.slinkywrappers.web
 import com.lambdaminute.slinkywrappers.materialui._
 import com.lambdaminute.slinkywrappers.materialui.color.primary
 import com.lambdaminute.slinkywrappers.materialui.variant._
+import com.lambdaminute.slinkywrappers.reactrouter.RouteProps
 import com.lambdaminute.slinkywrappers.semanticui.{Container, Button => SuiButton}
 import slinky.core.StatelessComponent
 import slinky.core.annotations.react
@@ -25,7 +26,7 @@ class Boob[T] {
 }
 
 @react class MaterialUiDemo extends StatelessComponent {
-  type Props = Unit
+  type Props = RouteProps
 
   private val css = AppCSS
 
