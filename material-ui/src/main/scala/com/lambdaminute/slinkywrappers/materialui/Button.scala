@@ -1,5 +1,6 @@
 package com.lambdaminute.slinkywrappers.materialui
 
+import com.lambdaminute.slinkywrappers.materialui.EventHandler
 import slinky.core.ExternalComponent
 import slinky.core.annotations.react
 
@@ -14,6 +15,7 @@ import scala.scalajs.js.UndefOr
                    fullWidth: UndefOr[Boolean] = js.undefined,
                    href: UndefOr[String] = js.undefined,
                    mini: UndefOr[Boolean] = js.undefined,
+                   onClick: UndefOr[EventHandler] = js.undefined,
                    size: UndefOr[size] = js.undefined,
   )
   override val component = MaterialUi.Button

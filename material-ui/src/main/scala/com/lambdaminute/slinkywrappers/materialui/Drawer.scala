@@ -12,7 +12,9 @@ import js.Dynamic.literal
 object TransitionDuration{
   implicit val writer: Writer[TransitionDuration] = (t: TransitionDuration) => {
     val enter = t.enter.map(_.toMillis)
-    literal(enter = t.enter.map(_.toMillis), exit = t.exit.map(_.toMillis))
+    val value = literal(enter = t.enter.map(_.toMillis), exit = t.exit.map(_.toMillis))
+    println(s"Transition value: $value")
+    value
   }
 }
 case class TransitionDuration(enter: UndefOr[FiniteDuration] = js.undefined, exit:UndefOr[FiniteDuration] = js.undefined)
@@ -32,7 +34,7 @@ object Variant extends Variant with EnumWriter {
                     open: UndefOr[Boolean] = js.undefined,
                     PaperProps: UndefOr[js.Object] = js.undefined,
                     SlideProps: UndefOr[js.Object] = js.undefined,
-                    transitionDuration: UndefOr[FiniteDuration | TransitionDuration] = js.undefined,
+                    transitionDuration: UndefOr[Int | TransitionDuration] = js.undefined,
                     variant: UndefOr[Variant] = js.undefined)
   override val component = MaterialUi.Drawer
 }

@@ -1,10 +1,13 @@
 package com.lambdaminute.slinkywrappers
 
+import org.scalajs.dom.Event
 import slinky.readwrite.Writer
 
 import scala.scalajs.js
 
 package object materialui {
+
+  type EventHandler = js.Function2[Event, js.Dynamic, Unit]
 
   trait EnumWriter {
     implicit val writer: Writer[this.type] = { name =>
