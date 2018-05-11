@@ -5,8 +5,11 @@ import com.lambdaminute.slinkywrappers.materialui.color.primary
 import com.lambdaminute.slinkywrappers.materialui.variant._
 import com.lambdaminute.slinkywrappers.reactrouter.RouteProps
 import com.lambdaminute.slinkywrappers.semanticui.{Container, Button => SuiButton}
-import slinky.core.StatelessComponent
+import com.lambdaminute.slinkywrappers.web.material.DrawerDemo
+import slinky.core.{Component, StatelessComponent}
 import slinky.core.annotations.react
+import slinky.core.facade.ReactElement
+import slinky.web.html.div
 
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.literal
@@ -20,15 +23,15 @@ object AppCSS extends js.Object
 @js.native
 object ReactLogo extends js.Object
 
-trait Tits
-class Boob[T] {
-  type U = T with Tits
-}
-
-@react class MaterialUiDemo extends StatelessComponent {
+@react class MaterialUiDemo extends Component {
   type Props = RouteProps
-
+  case class State(currentDemo: ReactElement= div())
   private val css = AppCSS
+
+  override def initialState = State()
+  private val demos = List(
+    "Drawer" -> DrawerDemo()
+  )
 
   private val themeSettings = literal {
     palette = literal {
@@ -42,13 +45,15 @@ class Boob[T] {
     val avatar = Avatar(src = "https://www.gravatar.com/avatar/04801ed5aa62e5cfaedb25314fc9660d")
     val toolbar =
       Toolbar(Typography(variant = textvariant.title, color = textcolor.inherit)("Material UI", avatar))
+    val element = Container(
+      AppBar(color = color.default, position = position.static)(toolbar),
+      Button(color = color.default, variant = raised, size = size.small)("Demo Button"),
+      Button(color = color.primary, variant = flat, size = size.medium)("Demo Button2"),
+      Button(color = color.secondary, variant = fab, size = size.large)("Demo Button3"),
+      SuiButton(primary = true)("Semantic UI Button")
+    )
     MuiThemeProvider(theme = daftTheme)(
-      Container(
-        AppBar(color = color.default, position = position.static)(toolbar),
-        Button(color = color.default, variant = raised, size = size.small)("Demo Button"),
-        Button(color = color.primary, variant = flat, size = size.medium)("Demo Button2"),
-        Button(color = color.secondary, variant = fab, size = size.large)("Demo Button3"),
-        SuiButton(primary = true)("Semantic UI Button")
-      ))
+      demos.head._2
+    )
   }
 }

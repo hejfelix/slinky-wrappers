@@ -3,9 +3,24 @@ package com.lambdaminute.slinkywrappers
 import slinky.readwrite.Writer
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
 
 package object materialui {
+
+  trait EnumWriter {
+    implicit val writer: Writer[this.type] = { name =>
+      println(s"writing: ${name}")
+      name.toString.asInstanceOf[js.Object]
+    }
+  }
+
+  sealed trait Anchor
+  object Anchor  {
+    case object left   extends Anchor
+    case object right  extends Anchor
+    case object top    extends Anchor
+    case object bottom extends Anchor
+    implicit val writer: Writer[Anchor] = _.toString.asInstanceOf[js.Object]
+  }
 
   sealed trait color
   object color extends color {
@@ -81,5 +96,5 @@ package object materialui {
   // Theme stuff
   type Breakpoint                       = String
   type BreakPointsOptionsAndBreakPoints = BreakPoints with BreakpointsOptions
-  type TypographyOptions = js.Object
+  type TypographyOptions                = js.Object
 }

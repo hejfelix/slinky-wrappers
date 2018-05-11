@@ -88,7 +88,7 @@ lazy val demo = project
     scalacOptions += "-P:scalajs:sjsDefinedByDefault",
     webpackConfigFile in fastOptJS := Some(baseDirectory.value / "webpack-fastopt.config.js"),
     webpackConfigFile in fullOptJS := Some(baseDirectory.value / "webpack-opt.config.js"),
-    webpackDevServerExtraArgs in fastOptJS := Seq("--inline", "--hot"),
+    webpackDevServerExtraArgs in fastOptJS := Seq("--inline", "--hot", "--host", "0.0.0.0"),
     webpackBundlingMode in fastOptJS := BundlingMode.LibraryOnly(),
     addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
   )

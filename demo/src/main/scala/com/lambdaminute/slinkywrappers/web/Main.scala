@@ -50,8 +50,8 @@ object Main {
           li(Link(to = materialRoute)("Material UI Demo"))
         ),
         Route(exact = true, path = route1, component = Page1),
-        Route(exact = true, path = semanticRoute, component = Page1),
-        Route(exact = true, path = materialRoute, component = SemanticUiDemo)
+        Route(exact = true, path = semanticRoute, component = SemanticUiDemo),
+        Route(exact = true, path = materialRoute, component = MaterialUiDemo)
       )
     )
   }
