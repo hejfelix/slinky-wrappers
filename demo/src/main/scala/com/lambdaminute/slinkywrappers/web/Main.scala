@@ -6,13 +6,11 @@ import slinky.core.StatelessComponent
 import slinky.core.annotations.react
 import slinky.core.facade.ReactElement
 import slinky.hot
-import slinky.readwrite.Reader
 import slinky.web.ReactDOM
 import slinky.web.html._
 
 import scala.scalajs.js.annotation.{JSExportTopLevel, JSImport}
-import scala.scalajs.{js, LinkingInfo}
-import js.{JSON, UndefOr}
+import scala.scalajs.{LinkingInfo, js}
 
 @JSImport("resources/index.css", JSImport.Default)
 @js.native
