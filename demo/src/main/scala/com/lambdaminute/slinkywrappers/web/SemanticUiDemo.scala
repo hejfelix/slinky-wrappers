@@ -16,7 +16,7 @@ import Width.{`3` => _3, `13` => _13}
 @react class SemanticUiDemo extends Component {
 
   case class State(activeElement: ReactElement = div())
-  type Props = RouteProps
+  type Props = Unit
 
   private val demos = List(
     "Table" -> TableDemo(),

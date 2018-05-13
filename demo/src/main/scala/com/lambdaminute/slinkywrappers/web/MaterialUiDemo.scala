@@ -3,7 +3,6 @@ package com.lambdaminute.slinkywrappers.web
 import com.lambdaminute.slinkywrappers.materialui._
 import com.lambdaminute.slinkywrappers.materialui.color.primary
 import com.lambdaminute.slinkywrappers.materialui.variant._
-import com.lambdaminute.slinkywrappers.reactrouter.RouteProps
 import com.lambdaminute.slinkywrappers.semanticui.{Container, Button => SuiButton}
 import com.lambdaminute.slinkywrappers.web.material.DrawerDemo
 import slinky.core.{Component, StatelessComponent}
@@ -23,12 +22,9 @@ object AppCSS extends js.Object
 @js.native
 object ReactLogo extends js.Object
 
-@react class MaterialUiDemo extends Component {
-  type Props = RouteProps
-  case class State(currentDemo: ReactElement= div())
-  private val css = AppCSS
+@react class MaterialUiDemo extends StatelessComponent {
+  type Props = Unit
 
-  override def initialState = State()
   private val demos = List(
     "Drawer" -> DrawerDemo()
   )

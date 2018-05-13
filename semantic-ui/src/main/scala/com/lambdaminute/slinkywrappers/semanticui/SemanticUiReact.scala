@@ -1,14 +1,7 @@
 package com.lambdaminute.slinkywrappers.semanticui
 
-import javax.swing.Icon
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.{|, UndefOr}
-import slinky.core.annotations.react
-import slinky.core.facade.ReactElement
-import slinky.core.{ExternalComponent, ExternalComponentNoProps}
-import slinky.readwrite.Writer
 
 @JSImport("semantic-ui-react", JSImport.Default)
 @js.native

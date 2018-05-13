@@ -6,11 +6,13 @@ import slinky.core.StatelessComponent
 import slinky.core.annotations.react
 import slinky.core.facade.ReactElement
 import slinky.hot
+import slinky.readwrite.Reader
 import slinky.web.ReactDOM
 import slinky.web.html._
 
 import scala.scalajs.js.annotation.{JSExportTopLevel, JSImport}
 import scala.scalajs.{js, LinkingInfo}
+import js.{JSON, UndefOr}
 
 @JSImport("resources/index.css", JSImport.Default)
 @js.native
@@ -38,6 +40,7 @@ object Main {
 
 @react class Demos extends StatelessComponent {
   type Props = Unit
+
   def render(): ReactElement = {
     val route1        = "/"
     val semanticRoute = "/semantic"
@@ -49,9 +52,9 @@ object Main {
           li(Link(to = semanticRoute)("Semantic UI Demo")),
           li(Link(to = materialRoute)("Material UI Demo"))
         ),
-        Route(exact = true, path = route1, component = Page1),
-        Route(exact = true, path = semanticRoute, component = SemanticUiDemo),
-        Route(exact = true, path = materialRoute, component = MaterialUiDemo)
+        Route(exact = true, path = route1, render = _ => h1("Hello!")),
+        Route(exact = true, path = semanticRoute, render = _ => SemanticUiDemo()),
+        Route(exact = true, path = materialRoute, render = _ => MaterialUiDemo())
       )
     )
   }
@@ -61,6 +64,6 @@ object Main {
 @react class Page1 extends StatelessComponent {
   type Props = RouteProps
   def render(): ReactElement = div(
-    h1(props.`match`.path)
+    h1(props.location.pathname.toString)
   )
 }
