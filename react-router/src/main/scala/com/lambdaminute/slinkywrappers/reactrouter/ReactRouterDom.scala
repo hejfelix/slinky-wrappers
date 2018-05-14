@@ -7,6 +7,7 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 object ReactRouterDom extends js.Object {
   val BrowserRouter: js.Object = js.native
-  val Route: js.Object        = js.native
+  val Route: js.Object         = js.native
   val Link: js.Object          = js.native
+  val Redirect: js.Object      = js.native
 }

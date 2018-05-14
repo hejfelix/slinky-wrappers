@@ -14,8 +14,8 @@ import scala.scalajs.js.UndefOr
                    noWrap: UndefOr[Boolean] = js.undefined,
                    paragraph: UndefOr[Boolean] = js.undefined,
                    variant: UndefOr[textvariant] = js.undefined,
-
                   )
+
   override val component = MaterialUi.Typography
 
 }
