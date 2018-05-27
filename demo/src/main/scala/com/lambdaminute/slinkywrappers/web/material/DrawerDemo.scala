@@ -6,9 +6,8 @@ import slinky.core.annotations.react
 import slinky.core.facade.ReactElement
 import slinky.web.html.{div, h1}
 
-import scala.scalajs.js.{JSON, UndefOr, timers}
-import scalajs.js.Dynamic.literal
-import concurrent.duration._
+import scala.concurrent.duration._
+import scala.scalajs.js.UndefOr
 
 @react class DrawerDemo extends Component {
   type Props = Unit

@@ -8,6 +8,6 @@ import scala.scalajs.js
 import scala.scalajs.js.UndefOr
 
 @react object Toolbar extends ExternalComponent {
-  case class Props(disableGutters: UndefOr[Bool] = js.undefined)
+  case class Props(className: UndefOr[String] = js.undefined, disableGutters: UndefOr[Bool] = js.undefined)
   override val component = MaterialUi.Toolbar
 }

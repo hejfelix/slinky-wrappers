@@ -28,6 +28,7 @@ object Variant extends Variant with EnumWriter {
 
 @react object Drawer extends ExternalComponent {
   case class Props( anchor: UndefOr[Anchor] = js.undefined,
+                    className: UndefOr[String] = js.undefined,
                     elevation: UndefOr[Int] = js.undefined,
                     ModalProps:UndefOr[js.Object] = js.undefined,
                     onClose: UndefOr[js.Function] = js.undefined,

@@ -1,6 +1,5 @@
 package com.lambdaminute.slinkywrappers.materialui
 
-import com.lambdaminute.slinkywrappers.materialui.EventHandler
 import slinky.core.ExternalComponent
 import slinky.core.annotations.react
 
@@ -9,6 +8,7 @@ import scala.scalajs.js.UndefOr
 
 @react object Button extends ExternalComponent {
   case class Props(color: UndefOr[color] = js.undefined,
+                   className: UndefOr[String] = js.undefined,
                    variant: UndefOr[variant] = js.undefined,
                    disabled: UndefOr[Boolean] = js.undefined,
                    disableFocusRipple: UndefOr[Boolean] = js.undefined,

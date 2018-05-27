@@ -8,6 +8,7 @@ import scala.scalajs.js.UndefOr
 
 @react object Typography extends ExternalComponent {
   case class Props(align: UndefOr[align] = js.undefined,
+                   className: UndefOr[String] = js.undefined,
                    color: UndefOr[textcolor] = js.undefined,
                    component: UndefOr[String] = js.undefined,
                    gutterBottom: UndefOr[Boolean] = js.undefined,

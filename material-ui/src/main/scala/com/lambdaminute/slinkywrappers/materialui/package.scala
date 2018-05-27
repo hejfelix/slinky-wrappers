@@ -4,6 +4,7 @@ import org.scalajs.dom.Event
 import slinky.readwrite.Writer
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 package object materialui {
 
@@ -16,8 +17,94 @@ package object materialui {
     }
   }
 
+  object Direction {
+    case object row
+    case object `row-reverse`
+    case object column
+    case object `column-reverse`
+
+    type Direction = row.type | `row-reverse`.type | column.type | `column-reverse`.type
+    implicit val writer: Writer[Direction] = _.toString.asInstanceOf[js.Object]
+  }
+
+  object AlignContent {
+    case object stretch
+    case object center
+    case object `flex-start`
+    case object `flex-end`
+    case object `space-between`
+    case object `space-around`
+    case object baseline
+
+    type AlignContent =
+      stretch.type | center.type | `flex-start`.type | `flex-start`.type | `space-between`.type | `space-around`.type
+
+    type AlignItems =
+      `flex-start`.type | center.type | `flex-end`.type | stretch.type | baseline.type
+
+    type Justify =
+      `flex-start`.type | center.type | `flex-end`.type | `space-between`.type | `space-around`.type
+
+    implicit val acriter: Writer[AlignContent] = _.toString.asInstanceOf[js.Object]
+    implicit val atwriter: Writer[AlignItems]  = _.toString.asInstanceOf[js.Object]
+    implicit val jwriter: Writer[Justify]      = _.toString.asInstanceOf[js.Object]
+  }
+
+  object Auto {
+    case object auto
+    implicit val w: Writer[auto.type] = _.toString.asInstanceOf[js.Object]
+  }
+
+  object Sizes {
+    case object `0`
+    case object `1`
+    case object `2`
+    case object `3`
+    case object `4`
+    case object `5`
+    case object `6`
+    case object `7`
+    case object `8`
+    case object `9`
+    case object `10`
+    case object `11`
+    case object `12`
+
+    case object `16`
+    case object `24`
+    case object `32`
+    case object `40`
+
+    case object `false`
+    case object `true`
+
+    type Sizes =
+      `1`.type | `2`.type | `3`.type | `4`.type | `5`.type | `6`.type | `7`.type | `8`.type | `9`.type | `10`.type | `11`.type | `12`.type | `false`.type | `true`.type
+
+    type Spacing = `0`.type | `8`.type | `16`.type | `24`.type | `32`.type | `40`.type
+
+    implicit val sw: Writer[Spacing] = _.toString.asInstanceOf[js.Object]
+    implicit val w: Writer[Sizes]    = _.toString.asInstanceOf[js.Object]
+  }
+
+  object Wrap {
+    case object nowrap
+    case object wrap
+    case object `wrap-reverse`
+    type Wrap = nowrap.type | wrap.type | `wrap-reverse`.type
+
+    implicit val w: Writer[Wrap] = _.toString.asInstanceOf[js.Object]
+  }
+
+  object Positions {
+    case object top
+    case object bottom
+    type TitlePosition = top.type | bottom.type
+    implicit val w: Writer[TitlePosition] = _.toString.asInstanceOf[js.Object]
+  }
+
   sealed trait Anchor
-  object Anchor  {
+  object Anchor {
     case object left   extends Anchor
     case object right  extends Anchor
     case object top    extends Anchor
@@ -93,7 +180,10 @@ package object materialui {
     case object center  extends align
     case object right   extends align
     case object justify extends align
-    implicit val writer: Writer[align] = _.toString.asInstanceOf[js.Object]
+
+    type ActionPosition = left.type | right.type
+    implicit val apw: Writer[ActionPosition] = _.toString.asInstanceOf[js.Object]
+    implicit val writer: Writer[align]       = _.toString.asInstanceOf[js.Object]
   }
 
   // Theme stuff

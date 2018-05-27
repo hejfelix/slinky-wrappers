@@ -4,7 +4,7 @@ import slinky.core.annotations.react
 import slinky.core.{ExternalComponent, ReactComponentClass}
 
 import scala.scalajs.js
-import scala.scalajs.js.{UndefOr, |}
+import scala.scalajs.js.{|, UndefOr}
 
 sealed trait Margin
 object Margin extends Margin with EnumWriter {
@@ -16,6 +16,7 @@ object Margin extends Margin with EnumWriter {
 @react object TextField extends ExternalComponent {
   case class Props(
       autoFocus: UndefOr[Boolean] = js.undefined,
+      className: UndefOr[String] = js.undefined,
       defaultValue: UndefOr[String | Double] = js.undefined,
       disabled: UndefOr[Boolean] = js.undefined,
       error: UndefOr[Boolean] = js.undefined,
