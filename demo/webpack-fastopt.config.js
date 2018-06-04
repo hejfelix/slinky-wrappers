@@ -42,6 +42,9 @@ module.exports = {
       return content.endsWith("-fastopt.js");
     }
   },
+  devServer: {
+    historyApiFallback: true
+  },
   plugins: [
     new CopyWebpackPlugin([
       { from: path.resolve(__dirname, "../../../../public") }

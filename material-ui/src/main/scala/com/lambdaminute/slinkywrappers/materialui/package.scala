@@ -79,12 +79,14 @@ package object materialui {
     case object `true`
 
     type Sizes =
-      `1`.type | `2`.type | `3`.type | `4`.type | `5`.type | `6`.type | `7`.type | `8`.type | `9`.type | `10`.type | `11`.type | `12`.type | `false`.type | `true`.type
+      `1`.type | `2`.type | `3`.type | `4`.type | `5`.type | `6`.type | `7`.type | `8`.type | `9`.type | `10`.type | `11`.type | `12`.type | Boolean
 
     type Spacing = `0`.type | `8`.type | `16`.type | `24`.type | `32`.type | `40`.type
 
-    implicit val sw: Writer[Spacing] = _.toString.asInstanceOf[js.Object]
-    implicit val w: Writer[Sizes]    = _.toString.asInstanceOf[js.Object]
+    implicit val sw: Writer[Spacing] = _.toString.toInt.asInstanceOf[js.Object]
+
+    implicit val w: Writer[Sizes] = s =>
+      if (s.toString.forall(_.isDigit)) s.toString.toInt.asInstanceOf[js.Object] else s.asInstanceOf[js.Object]
   }
 
   object Wrap {
@@ -142,9 +144,10 @@ package object materialui {
 
   sealed trait variant
   object variant extends variant {
-    case object flat   extends variant
-    case object raised extends variant
-    case object fab    extends variant
+    case object flat     extends variant
+    case object raised   extends variant
+    case object fab      extends variant
+    case object outlined extends variant
     implicit val writer: Writer[variant] = _.toString.asInstanceOf[js.Object]
   }
 

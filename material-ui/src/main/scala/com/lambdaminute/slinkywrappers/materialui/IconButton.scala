@@ -9,6 +9,7 @@ import scala.scalajs.js.{UndefOr}
   case class Props(className: UndefOr[String] = js.undefined,
                    color: UndefOr[color] = js.undefined,
                    disabled: UndefOr[Boolean] = js.undefined,
-                   disableRipple: UndefOr[Boolean] = js.undefined)
+                   disableRipple: UndefOr[Boolean] = js.undefined,
+                   onClick: UndefOr[EventHandler] = js.undefined)
   override val component = MaterialUi.IconButton
 }

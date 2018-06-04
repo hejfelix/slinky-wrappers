@@ -1,12 +1,12 @@
 package com.lambdaminute.slinkywrappers.materialui
 
-import slinky.core.ExternalComponent
+import slinky.core.ExternalComponentWithAttributes
 import slinky.core.annotations.react
 
 import scala.scalajs.js
 import scala.scalajs.js.UndefOr
 
-@react object Button extends ExternalComponent {
+@react object Button extends ExternalComponentWithAttributes[slinky.web.html.button.tag.type] {
   case class Props(color: UndefOr[color] = js.undefined,
                    className: UndefOr[String] = js.undefined,
                    variant: UndefOr[variant] = js.undefined,
