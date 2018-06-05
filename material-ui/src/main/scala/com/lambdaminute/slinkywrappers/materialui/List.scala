@@ -7,7 +7,7 @@ import slinky.core.facade.ReactElement
 import scala.scalajs.js
 import scala.scalajs.js.{|, UndefOr}
 
-@react object List extends ExternalComponent {
+@react object MList extends ExternalComponent {
 
   case class Props(
       className: UndefOr[String] = js.undefined,
