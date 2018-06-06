@@ -21,7 +21,7 @@ inThisBuild(
   ))
 
 val slinkyVersion     = "0.4.2"
-val materialUiVersion = "1.0.0-beta.43"
+val materialUiVersion = "1.2.0"
 
 val prefixName = "slinky-wrappers"
 
@@ -71,8 +71,8 @@ lazy val demo = project
       "react"                    -> "16.3.2",
       "react-dom"                -> "16.3.2",
       "react-proxy"              -> "1.1.8",
-      "material-ui"              -> materialUiVersion,
-      "@material-ui/icons"       -> materialUiVersion,
+      "@material-ui/core"        -> materialUiVersion,
+      "@material-ui/icons"       -> "1.1.0",//It's behind for some reason
       "react-router-dom"         -> "4.2.2",
       "semantic-ui-react"        -> "0.78.2",
       "react-syntax-highlighter" -> "7.0.2"

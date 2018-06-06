@@ -4,7 +4,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
 
-@JSImport("material-ui", JSImport.Default)
+@JSImport("@material-ui/core", JSImport.Default)
 @js.native
 object MaterialUi extends js.Object {
   val AppBar: js.Object                  = js.native
