@@ -4,7 +4,7 @@ import com.lambdaminute.slinkywrappers.reactrouter._
 import org.scalajs.dom
 import slinky.core.annotations.react
 import slinky.core.facade.ReactElement
-import slinky.core.{Component, ReactComponentClass, StatelessComponent}
+import slinky.core.{Component, StatelessComponent}
 import slinky.hot
 import slinky.web.ReactDOM
 import slinky.web.html._
@@ -31,9 +31,7 @@ object Main {
       dom.document.body.appendChild(elem)
       elem
     }
-
-    val element: ReactElement = withRouter(Demos)
-    ReactDOM.render(BrowserRouter(element), container)
+    ReactDOM.render(BrowserRouter(withRouter(Demos)), container)
   }
 }
 

@@ -23,12 +23,12 @@ package object cards {
     override val component = MaterialUi.CardContent
   }
   @react object CardHeader extends ExternalComponent {
-    case class Props(action: UndefOr[ReactComponentClass] = js.undefined,
-                     avatar: UndefOr[ReactComponentClass] = js.undefined,
+    case class Props(action: UndefOr[ReactComponentClass[js.Object]] = js.undefined,
+                     avatar: UndefOr[ReactComponentClass[js.Object]] = js.undefined,
                      className: UndefOr[String] = js.undefined,
                      component: UndefOr[String | js.Function] = js.undefined,
-                     subheader: UndefOr[ReactComponentClass] = js.undefined,
-                     title: UndefOr[ReactComponentClass] = js.undefined)
+                     subheader: UndefOr[ReactComponentClass[js.Object]] = js.undefined,
+                     title: UndefOr[ReactComponentClass[js.Object]] = js.undefined)
     override val component = MaterialUi.CardHeader
   }
   @react object CardMedia extends ExternalComponent {

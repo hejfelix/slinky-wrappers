@@ -11,6 +11,7 @@ import slinky.core.facade.ReactElement
 import slinky.web.html.div
 
 import scala.scalajs.js
+import scala.scalajs.js.Dynamic
 import scala.scalajs.js.Dynamic.literal
 import scala.scalajs.js.annotation.JSImport
 
@@ -29,9 +30,9 @@ object ReactLogo extends js.Object
     "Drawer" -> DrawerDemo()
   )
 
-  private val themeSettings = literal {
-    palette = literal {
-      primary = MaterialUi.colors.blue
+  private val themeSettings = Dynamic.literal {
+    "palette" -> literal {
+      "primary" -> MaterialUi.colors.blue
     }
   }
   private val daftTheme: Theme = MaterialUi.createMuiTheme(themeSettings)

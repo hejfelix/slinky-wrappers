@@ -9,7 +9,7 @@ import scala.scalajs.js.annotation.JSImport
 @JSImport("react-router", JSImport.Default)
 @js.native
 object ReactRouter extends js.Object {
-  private[reactrouter] def withRouter: js.Function1[ReactComponentClass,js.Function1[js.Object,ReactElement]] = js.native
+  def withRouter: js.Function1[ReactComponentClass[RouteProps], js.Function1[js.Object, ReactElement]] = js.native
 }
 
 //@react object withRouter extends ExternalComponent {

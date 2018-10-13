@@ -20,8 +20,8 @@ inThisBuild(
     scalaVersion := "2.12.4"
   ))
 
-val slinkyVersion     = "0.4.2"
-val materialUiVersion = "1.2.0"
+val slinkyVersion     = "0.5.0"
+val materialUiVersion = "3.2.0"
 
 val prefixName = "slinky-wrappers"
 
@@ -63,16 +63,18 @@ lazy val reactRouter =
     )
     .withId(s"$prefixName-react-router")
 
+val reactVersion = "16.3.0"
+
 lazy val demo = project
   .in(file("demo"))
   .enablePlugins(ScalaJSBundlerPlugin)
   .settings(
     npmDependencies in Compile ++= Seq(
-      "react"                    -> "16.3.2",
-      "react-dom"                -> "16.3.2",
+      "react"                    -> reactVersion,
+      "react-dom"                -> reactVersion,
       "react-proxy"              -> "1.1.8",
       "@material-ui/core"        -> materialUiVersion,
-      "@material-ui/icons"       -> "1.1.0",//It's behind for some reason
+      "@material-ui/icons"       -> "3.0.1", //It's behind for some reason
       "react-router-dom"         -> "4.2.2",
       "semantic-ui-react"        -> "0.78.2",
       "react-syntax-highlighter" -> "7.0.2"
@@ -84,13 +86,14 @@ lazy val demo = project
                                           "copy-webpack-plugin" -> "4.2.0"),
     libraryDependencies += "me.shadaj"    %%% "slinky-web"    % slinkyVersion,
     libraryDependencies += "me.shadaj"    %%% "slinky-hot"    % slinkyVersion,
+    libraryDependencies += "me.shadaj"    %%% "slinky-core"   % slinkyVersion,
     libraryDependencies += "com.geirsson" %%% "scalafmt-core" % "1.4.0",
     scalacOptions += "-P:scalajs:sjsDefinedByDefault",
     webpackConfigFile in fastOptJS := Some(baseDirectory.value / "webpack-fastopt.config.js"),
     webpackConfigFile in fullOptJS := Some(baseDirectory.value / "webpack-opt.config.js"),
     webpackDevServerExtraArgs in fastOptJS := Seq("--inline", "--hot", "--host", "0.0.0.0"),
     webpackBundlingMode in fastOptJS := BundlingMode.LibraryOnly(),
-    addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M11" cross CrossVersion.full)
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
   )
   .dependsOn(materialUi)
   .dependsOn(semanticUi)

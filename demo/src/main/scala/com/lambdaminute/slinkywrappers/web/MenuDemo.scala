@@ -12,7 +12,7 @@ import slinky.web.html.div
 
   case class State(selected: String = "A")
 
-  case class Props()
+  type Props = Unit
 
   override def initialState = State()
 
@@ -26,12 +26,10 @@ import slinky.web.html.div
   }
 
   private def items =
-    menuNames.map(n =>
-      MenuItem(name = n, active = state.selected == n, onClick = onClick).withKey(n))
+    menuNames.map(n => MenuItem(name = n, active = state.selected == n, onClick = onClick).withKey(n))
 
   private def subItems =
-    subMenuNames.map(n =>
-      MenuItem(name = n, active = state.selected == n, onClick = onClick).withKey(n))
+    subMenuNames.map(n => MenuItem(name = n, active = state.selected == n, onClick = onClick).withKey(n))
 
   override def render(): ReactElement =
     div(Menu(

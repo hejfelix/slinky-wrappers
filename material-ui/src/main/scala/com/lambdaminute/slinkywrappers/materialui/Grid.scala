@@ -11,6 +11,7 @@ import AlignContent._
 import Direction._
 import Sizes._
 import Wrap._
+
 @react object Grid extends ExternalComponent {
   case class Props(
       alignContent: UndefOr[AlignContent] = js.undefined,
