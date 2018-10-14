@@ -1,6 +1,15 @@
+# Demo
+
+See the demo here: https://hejfelix.github.io/slinky-wrappers/
+
+# Maven central
 * React router ![React Route](https://maven-badges.herokuapp.com/maven-central/com.lambdaminute/slinky-wrappers-react-router_sjs0.6_2.12/badge.svg)
 * Semantic UI ![React Route](https://maven-badges.herokuapp.com/maven-central/com.lambdaminute/slinky-wrappers-semantic-ui_sjs0.6_2.12/badge.svg)
 * Material UI ![React Route](https://maven-badges.herokuapp.com/maven-central/com.lambdaminute/slinky-wrappers-material-ui_sjs0.6_2.12/badge.svg)
+
+## Installation
+
+See in [build.sbt](build.sbt) how the demo project is set up using [scalajs-bundler](https://github.com/scalacenter/scalajs-bundler).
 
 # slinky-wrappers
 
