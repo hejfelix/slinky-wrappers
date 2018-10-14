@@ -10,6 +10,7 @@ See the demo here: https://hejfelix.github.io/slinky-wrappers/
 ## Installation
 
 See in [build.sbt](build.sbt) how the demo project is set up using [scalajs-bundler](https://github.com/scalacenter/scalajs-bundler).
+For an bigger example using material ui, please see this project: https://github.com/hejfelix/wishr
 
 # slinky-wrappers
 
