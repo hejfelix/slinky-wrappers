@@ -1,4 +1,10 @@
+* React router ![React Route](https://maven-badges.herokuapp.com/maven-central/com.lambdaminute/slinky-wrappers-react-router_sjs0.6_2.12/badge.svg)
+* Semantic UI ![React Route](https://maven-badges.herokuapp.com/maven-central/com.lambdaminute/slinky-wrappers-semantic-ui_sjs0.6_2.12/badge.svg)
+* Material UI ![React Route](https://maven-badges.herokuapp.com/maven-central/com.lambdaminute/slinky-wrappers-material-ui_sjs0.6_2.12/badge.svg)
+
 # slinky-wrappers
+
+
 
 These are wrappers that I'm writing for my own projects. Currently, there's somewhat more support for Material UI than Semantic UI. There's an example using it here: https://github.com/hejfelix/wishr
 
