@@ -20,7 +20,7 @@ inThisBuild(
     scalaVersion := "2.12.4"
   ))
 
-val slinkyVersion     = "0.5.0"
+val slinkyVersion     = "0.6.1"
 val materialUiVersion = "3.2.0"
 
 val prefixName = "slinky-wrappers"
@@ -63,7 +63,7 @@ lazy val reactRouter =
     )
     .withId(s"$prefixName-react-router")
 
-val reactVersion = "16.3.0"
+val reactVersion = "16.8.6"
 
 lazy val demo = project
   .in(file("demo"))
