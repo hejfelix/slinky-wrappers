@@ -1,3 +1,7 @@
+# *** HELP WANTED ***
+
+The demo needs to be fleshed out. It serves as a sanity check / ad hoc test suite, but I don't have much time for this project since I became a dad. If you want to help, let me know!
+
 # Demo
 
 See the demo here: https://hejfelix.github.io/slinky-wrappers/
